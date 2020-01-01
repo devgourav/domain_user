@@ -1,0 +1,66 @@
+<div class="navbar">
+  <div class="container">
+    <div class="navbar-content">
+
+      <div class="navbar-left">
+        <a class="navbar-brand" href="/">
+          <img src="../../../assets/images/domain_logo_white.png" alt="">
+        </a>
+      </div>
+
+      <div class="navbar-space" *ngIf="isSearch == false">
+      </div>
+
+
+      <div class="navbar-search" *ngIf="isSearch == true">
+
+        <form id="search-form" [formGroup]="searchForm">
+          <div class="search-control">
+            <input type="text" name="search" placeholder="Search domains" aria-label="Search domains" autofocus=""
+              value="" formControlName="term">
+            <input type="submit" (click)="searchDomain()" value>
+          </div>
+        </form>
+
+      </div>
+
+      <div class="navbar-middle">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="/">Domains</a>
+          </li>
+          <li class="fav-link " style="display: none;">
+            <a href="/favourites" title="Favourites">
+              <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li class="log-in-out" *ngIf="isSignedIn == false">
+            <span href="" (click)="domainLogin()">Log in</span>
+          </li>
+          <li class="" *ngIf="isSignedIn == true">
+            <a href="/account">Account</a>
+          </li>
+          <li class="" *ngIf="isSignedIn == true">
+            <a href="/order">Orders</a>
+          </li>
+          <li class="log-in-out" *ngIf="isSignedIn == true">
+            <a href="" (click)="logout()">Logout</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="navbar-hamburger visible-xs-block">
+
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".mobile-nav">
+
+          <fa-icon [icon]="faHamburger" size="1x"></fa-icon>
+
+        </button>
+
+      </div>
+
+
+    </div>
+  </div>
+
+</div>

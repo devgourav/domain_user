@@ -1,0 +1,67 @@
+@import "../../../assets/styles/common.scss";
+
+.order-detail {
+  margin-top: 16vh;
+  line-height: 1.9em;
+  color: #333;
+}
+
+.search-page-header {
+  width: 80%;
+  padding: 14px 1em;
+  height: 64px;
+  border-bottom: 1px solid #eee;
+
+  .header {
+    float: left;
+    margin-right: 20px;
+
+    h1 {
+      margin: 5px 0 0 0;
+      font-size: 22px;
+      display: inline-block;
+      white-space: nowrap;
+      text-align: start;
+    }
+  }
+}
+
+.order-details {
+  width: 100%;
+  margin-bottom: 36vh;
+
+  .row {
+    margin-top: 16px;
+    font-size: 1.2em;
+
+    a {
+      span {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  .row:nth-of-type(2) {
+    margin-top: 128px;
+  }
+
+}
+
+table {
+  width: 100%;
+  border: 1px solid rgba($color: #e2e8ea, $alpha: 1);
+  border-style: none;
+}
+
+td.mat-cell {
+  border-bottom-style: none;
+  color: #58666e;
+  font-size: 1.1em;
+}
+
+th.mat-header-cell {
+  border-bottom-style: none;
+  font-size: 1em;
+  font-weight: 500;
+  color: #58666e;
+}

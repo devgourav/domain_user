@@ -1,0 +1,106 @@
+<div class="wrapper">
+
+  <app-header [isSearch]="true"></app-header>
+
+  <div class="container single-word" *ngIf="domain">
+
+    <div class="visible-xs-block">
+      <div class="domain-logo">
+        <img src="{{domain.imageUrl}}" class="img-responsive" alt="">
+      </div>
+    </div>
+
+
+    <h1 class="word-breakable">
+      <span class="lead">The domain name</span>
+      <a href="http://xioxo.com/">{{domain.name}}</a>
+      <span class="small">
+        is for sale
+      </span>
+    </h1>
+  </div>
+
+
+  <div class="grey-panel" *ngIf="domain">
+
+    <div class="container single-main">
+      <div class="row">
+
+
+        <div class="col-md-6 col-xs-12">
+          <h4>What you get:</h4>
+          <ul class="get-list">
+            <li>Domain name: <b>{{domain.name}}</b>
+            </li>
+            <li>Logo design</li>
+          </ul>
+
+          <div class="price-box">
+            <div class="price-box-desc">
+
+              <h4>Buy {{domain.name}}</h4>
+              <div class="price-box-value">
+
+                <div id="regular-price">
+                  <span class="domain-price text-strike">
+                    {{domain.price | currency:"USD"}}
+                  </span>
+                  <span class="domain-price">
+                    {{domain.salePrice | currency:"USD"}}
+                  </span>
+                </div>
+
+              </div>
+
+            </div>
+            <div class="price-box-actions">
+              <div class="price-box-buttons">
+
+                <button class="btn btn-lg btn-buy" id="buy-button" (click)="openPaymentPage(domain.id)">
+                  <fa-icon [icon]="faCheck" size="1x"></fa-icon>
+                  <span id="buy-now-text">Buy now</span>
+                </button>
+
+
+              </div>
+            </div>
+
+
+          </div>
+
+          <p>
+            {{domain.description}}
+          </p>
+        </div>
+
+
+        <div class="col-md-5 col-xs-12 col-md-offset-1 thumb-container">
+
+
+
+          <div class="hidden-xs">
+            <div class="domain-logo">
+              <img src="{{domain.imageUrl}}" class="img-responsive" alt="">
+            </div>
+          </div>
+
+          <h3>Keywords for {{domain.name}}</h3>
+
+          <a href="/tag/adaptable" class="btn btn-default btn-tag" *ngFor="let keyword of domain.keyWords">
+            {{keyword}}
+          </a>
+
+
+
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+
+</div>
+
+<app-footer></app-footer>

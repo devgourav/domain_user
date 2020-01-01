@@ -1,0 +1,136 @@
+@import "../../../assets/styles/common.scss";
+
+
+.domain-result {
+  margin-top: 16vh;
+  line-height: 1.9em;
+  color: #333;
+}
+
+
+.search-page-header {
+
+  border-left: 1px solid #eee;
+  width: 80%;
+  margin-left: 20%;
+
+  border-bottom: 1px solid #eee;
+  padding: 14px 1em;
+  height: 64px;
+
+  .sort {
+    text-align: right;
+    display: inline;
+    float: right;
+    font-weight: 600;
+
+    label {
+      margin-right: 8px;
+
+    }
+  }
+
+  .header {
+    float: left;
+    margin-right: 20px;
+
+    h1 {
+      margin: 5px 0 0 0;
+      font-size: 22px;
+      display: inline-block;
+      white-space: nowrap;
+      text-align: start;
+    }
+  }
+}
+
+.sidebar {
+  width: 20%;
+  border-top: 1px solid #eee;
+  font-weight: 600;
+
+  input {
+    margin-right: 8px;
+  }
+
+  .slider-filter {
+    margin-top: 32px;
+    border-top: 1px solid #eee;
+
+
+
+    h4 {
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+
+    h4:nth-of-type(1) {
+      margin-top: 32px;
+    }
+  }
+
+
+
+}
+
+.content {
+  height: 100%;
+  width: 100%;
+  margin-top: -44vh;
+  border-left: 1px solid #eee;
+  min-height: 400px;
+}
+
+.results {
+  margin-top: 0.5vh;
+  padding: 0.5em 0.5em 3em 0.5em;
+}
+
+
+mat-slider {
+  width: 300px;
+  color: #4DB6AC;
+}
+
+@media (min-width: 1440px) {
+  .search-page-header {
+    border-left: 1px solid #eee;
+    width: 80%;
+    margin-left: 20%;
+  }
+
+  .content {
+    width: 80%;
+    margin-left: 20%;
+  }
+
+  .container {
+    width: 1440px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .search-page-header {
+    width: 80%;
+    margin-left: 20%;
+  }
+
+  .content {
+    width: 80%;
+    margin-left: 20%;
+  }
+
+}
+
+@media (min-width: 992px) {
+  .search-page-header {
+    border-left: 1px solid #eee;
+    width: 70%;
+    margin-left: 30%;
+  }
+
+  .content {
+    width: 70%;
+    margin-left: 30%;
+  }
+}

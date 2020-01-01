@@ -1,0 +1,73 @@
+<div class="wrapper">
+  <app-header></app-header>
+  <div class="container account-detail">
+
+    <div class="search-page-header">
+      <div class="header">
+        <fa-icon [icon]="faUser" size="2x"></fa-icon>
+        <h1>Account Details</h1>
+      </div>
+    </div>
+
+    <div class="user-details">
+      <div class="row">
+        <div class="col-md-4 col-xs-5">
+          <span>Name</span>
+        </div>
+        <div class="col-md-4 col-md-offset-1 col-xs-5 col-xs-offset-1">
+          <span>{{account.displayName}}</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 col-xs-5">
+          <span>Email</span>
+        </div>
+        <div class="col-md-4 col-md-offset-1 col-xs-5 col-xs-offset-1">
+          <span>{{account.email}}</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 col-xs-5">
+          <span>Contact Number</span>
+        </div>
+        <div class="col-md-4 col-md-offset-1 col-xs-5 col-xs-offset-1 ">
+          <span>{{account.phoneNumber}}</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 col-xs-12">
+          <a href="/order">
+            <span> View All Orders</span>
+            <fa-icon [icon]="faArrowRight" size="1x"></fa-icon>
+          </a>
+
+        </div>
+        <div class="col-md-4 col-xs-12">
+          <a href="/search">
+            <span>Explore Domains</span>
+            <fa-icon [icon]="faArrowRight" size="1x"></fa-icon>
+          </a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 col-xs-12">
+          <a href="" (click)="logout()">
+            <span> Logout</span>
+            <fa-icon [icon]="faSignOutAlt" size="1x"></fa-icon>
+          </a>
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+  <app-footer></app-footer>
+</div>

@@ -1,0 +1,29 @@
+@import "../../../assets/styles/common.scss";
+
+
+.footer {
+  padding-top: 36px;
+  background: #4DB6AC;
+  margin-top: 0;
+  color: #fff;
+  padding-bottom: 36px;
+}
+
+.footer a {
+  color: #fff;
+  opacity: 1;
+  text-decoration: underline;
+  margin-right: 16px;
+}
+
+.social-media {
+  fa-icon {
+    margin-right: 8px;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer {
+    text-align: center;
+  }
+}

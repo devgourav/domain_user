@@ -1,0 +1,60 @@
+@import "../../../assets/styles/common.scss";
+
+
+
+.account-detail {
+  margin-top: 16vh;
+  line-height: 1.9em;
+  color: #333;
+}
+
+
+.search-page-header {
+
+  border-bottom: 1px solid #eee;
+  width: 80%;
+
+
+  padding: 14px 1em;
+  height: 64px;
+
+  .header {
+    float: left;
+    display: block;
+
+    h1 {
+      margin-left: 16px;
+      font-size: 22px;
+      display: inline-block;
+      white-space: nowrap;
+      text-align: start;
+    }
+  }
+}
+
+.user-details {
+  margin-top: 64px;
+  margin-bottom: 20vh;
+
+  .row {
+    margin-top: 16px;
+    font-size: 1.2em;
+
+    a {
+      span {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  .row:nth-of-type(4) {
+    margin-top: 128px;
+  }
+
+  .row:nth-of-type(5) {
+    margin-top: 64px;
+  }
+
+
+
+}

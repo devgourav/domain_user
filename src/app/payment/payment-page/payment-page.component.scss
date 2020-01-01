@@ -1,0 +1,123 @@
+@import "../../../assets/styles/common.scss";
+
+.payment-wrapper {
+  min-height: 100%;
+  line-height: 1.9;
+  width: 100%;
+}
+
+.payment-details {
+  margin: 80px 0;
+
+  .table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .text-right {
+    text-align: right;
+  }
+
+  .faint {
+    opacity: 0.5;
+  }
+
+  table tr th:last-child {
+    padding-right: 0;
+  }
+
+  table td {
+    border-bottom: 1px solid #ddd;
+  }
+}
+
+
+
+.checkbox {
+  margin-bottom: 16px;
+}
+
+.wrapper {
+  min-height: 100%;
+
+  .container {
+    min-height: 75%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+
+
+.navbar {
+  width: 100%;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border: 0;
+  min-height: 86px;
+
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 1030;
+
+  .navbar-content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar-left {
+    flex: 0 1 auto;
+    width: 100px;
+    min-width: 70px;
+  }
+
+
+  .navbar-brand {
+    float: left;
+    height: 50px;
+    padding: 8px 8px;
+
+    img {
+      width: 100%;
+      height: auto;
+      margin-top: 8px;
+      vertical-align: middle;
+    }
+  }
+
+
+}
+
+.domain-logo {
+  width: 100%;
+  position: relative;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.15);
+  margin-top: 48px;
+  margin-bottom: 16px;
+
+  .img-responsive {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.visible-xs-block {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  .hidden-xs {
+    display: none !important;
+  }
+
+  .visible-xs-block {
+    display: block !important;
+
+  }
+}

@@ -1,0 +1,66 @@
+<div class="home">
+
+  <app-header [isSearch]="false"></app-header>
+
+  <div class="container">
+    <div class="jumbotron text-center">
+      <h1>Search for a domain name</h1>
+
+      <form id="search-form" [formGroup]="searchForm">
+        <div class="search-control">
+          <input type="text" name="search" placeholder="Search by keyword, e.g. tech, beauty"
+            aria-label="Search by keyword, e.g. tech, beauty" autofocus="" value="" formControlName="term">
+          <input type="submit" (click)="submitSearchForm()" value>
+        </div>
+      </form>
+
+      <p class="lead">
+        We sell premium domain names, complete with logo. <a href="/buyers">Learn more</a>
+      </p>
+
+      <p class="lead">
+        <a href="/search">Explore All Domains</a>
+      </p>
+
+    </div>
+  </div>
+
+
+  <div class="container-home">
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="small-title">Featured domains for sale</h3>
+          <div class="row">
+            <div class="col-md-3 col-xs-6" *ngFor="let domain of domains">
+
+
+              <div class="details-card">
+                <img class="domain-image" mat-card-image src="{{domain.imageUrl}}" alt="logo"
+                  (click)="openDomainDetail(domain.id)">
+
+                <div class="row">
+                  <div class="col-sm-7">
+                    <span class="price strike-text">{{domain.name}}</span>
+                  </div>
+                  <div class="col-sm-5">
+                    <span class="price">{{domain.salePrice | currency:"USD"}}</span>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <app-footer></app-footer>
+</div>

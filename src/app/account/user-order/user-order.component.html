@@ -1,0 +1,97 @@
+<div class="wrapper">
+  <app-header></app-header>
+  <div class="container order-detail">
+
+
+
+    <div class="search-page-header">
+      <div class="header">
+        <h1>Order Details</h1>
+      </div>
+    </div>
+
+
+    <div class="order-details">
+      <div class="row">
+        <div class="col-md-12">
+
+          <table mat-table [dataSource]="dataSource">
+
+            <ng-container matColumnDef="description">
+              <th mat-header-cell *matHeaderCellDef>Domains</th>
+              <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="amount">
+              <th mat-header-cell *matHeaderCellDef>Amount</th>
+              <td mat-cell *matCellDef="let element"> {{element.amount | currency:"USD"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="email">
+              <th mat-header-cell *matHeaderCellDef>Payer Email</th>
+              <td mat-cell *matCellDef="let element"> {{element.payer_email}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="contact">
+              <th mat-header-cell *matHeaderCellDef></th>
+              <td mat-cell *matCellDef="let element"> {{element.contact}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="creationDate">
+              <th mat-header-cell *matHeaderCellDef>Order Date</th>
+              <td mat-cell *matCellDef="let element">
+                {{element.creationDate.seconds * 1000 | date:'dd MMM yyyy, hh:mm:ss aa'}}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef>Status</th>
+              <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+            </ng-container>
+
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+          </table>
+
+        </div>
+
+
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <a href="/order">
+            <span> View All Orders</span>
+            <fa-icon [icon]="faArrowRight" size="1x"></fa-icon>
+          </a>
+
+        </div>
+        <div class="col-md-4">
+          <a href="/search">
+            <span>Explore Domains</span>
+            <fa-icon [icon]="faArrowRight" size="1x"></fa-icon>
+          </a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <a href="" (click)="logout()">
+            <span> Logout</span>
+            <fa-icon [icon]="faSignOutAlt" size="1x"></fa-icon>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+  <app-footer></app-footer>
+</div>

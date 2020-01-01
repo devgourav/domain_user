@@ -1,0 +1,200 @@
+@import "../../../assets/styles/common.scss";
+
+
+
+.single-word {
+  padding: 30px;
+  color: #888;
+  font-size: 18px;
+  margin-top: 16vh;
+
+  .lead {
+    display: block;
+    margin: 0;
+    font-size: 21px;
+    font-weight: 300;
+    line-height: 1.4;
+  }
+
+
+
+  a {
+    color: #494949;
+    text-decoration: none;
+  }
+
+
+
+}
+
+
+.word-breakable {
+  word-break: break-all;
+}
+
+.grey-panel {
+  background: #f6f6f6;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 64px;
+}
+
+.get-list {
+  padding: 0;
+  font-size: 18px;
+  list-style: none;
+}
+
+.get-list li:before {
+  background-image: url(../../../assets/images/tick.png);
+  background-size: 14px 10px;
+  display: inline-block;
+  width: 14px;
+  height: 10px;
+  content: "";
+  margin-right: 12px;
+}
+
+.single-main {
+  line-height: 1.9em;
+
+  .row {
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+
+
+}
+
+.domain-price {
+  margin-right: 8px;
+}
+
+.domain-logo {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  margin-bottom: 40px;
+  padding-bottom: 2px;
+
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.15);
+
+
+  width: 90%;
+  height: auto;
+  position: relative;
+  background-blend-mode: screen;
+  background-color: #fff;
+
+  img {
+    vertical-align: middle;
+
+  }
+}
+
+
+.img-responsive {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+a.btn-tag {
+  background: #E0E8FF;
+  color: #333366;
+  border: 0;
+
+  text-decoration: none;
+
+  margin-bottom: 4px;
+  margin-right: 4px;
+  transition: all 0.3s;
+}
+
+.price-box {
+  background-color: #fff;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  margin: 30px 0;
+  overflow: hidden;
+
+  .price-box-desc {
+    padding: 20px 20px 0;
+  }
+
+  .price-box-value {
+    font-size: 30px;
+  }
+
+  .price-box-actions {
+    padding: 20px;
+  }
+
+  .price-box-buttons {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+
+    #buy-now-text {
+      margin-left: 8px;
+    }
+  }
+
+  .btn-buy {
+    display: inline-block;
+    white-space: nowrap;
+    height: auto;
+    font-weight: normal;
+    font-family: 'Lato', sans-serif;
+    background: #ef156e;
+    color: #fff;
+    border: 0;
+    padding: 6px 14px;
+    line-height: 30px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    text-shadow: none;
+  }
+
+
+}
+
+
+
+
+
+@media (min-width: 992px) {
+  .thumb-container {
+    margin-top: -170px;
+  }
+
+  .col-md-offset-1 {
+    margin-left: 8.33333333%;
+  }
+
+  .col-md-5 {
+    width: 41.66666667%;
+  }
+
+}
+
+
+
+.visible-xs-block {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  .hidden-xs {
+    display: none !important;
+  }
+
+  .visible-xs-block {
+    display: block !important;
+
+  }
+}

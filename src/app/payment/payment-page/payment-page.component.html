@@ -1,0 +1,76 @@
+<div class="navbar">
+  <div class="container">
+    <div class="navbar-content">
+
+      <div class="navbar-left">
+        <a class="navbar-brand" href="/">
+          <img src="../../../assets/images/domain_logo_black.png" alt="">
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+<div class="wrapper">
+
+  <div class="container">
+    <div class="row payment-wrapper">
+      <div class="col-md-7">
+        <div class="payment-details" *ngIf="domain &&isPaidFor==false">
+
+          <div class="visible-xs-block">
+            <div class="domain-logo">
+              <img src="{{domain.imageUrl}}" class="img-responsive" alt="">
+            </div>
+          </div>
+
+
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>{{this.domain.name}}<div class="faint">Includes domain name and logo.</div>
+                </td>
+                <td class="text-right">{{this.domain.salePrice | currency:"USD"}}</td>
+              </tr>
+              <tr>
+                <th style="border: 0" class="text-right">Total payable</th>
+                <th style="border: 0" class="text-right">{{this.domain.salePrice | currency:"USD"}}</th>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+
+        <div id="payment-checkbox-confirm" *ngIf="domain &&isPaidFor==false">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" id="payment-confirm-terms"> I agree to Domain's <a
+                href="https://resources.brandpa.com/legal/terms-and-conditions-for-buyers/" target="_blank">Terms and
+                Conditions for Buyers</a>
+            </label>
+          </div>
+        </div>
+
+        <div class="payment-buttons" #paypal></div>
+      </div>
+      <div class="col-md-4 col-md-offset-1" *ngIf="domain &&isPaidFor==false">
+
+        <div class="hidden-xs">
+          <div class="domain-logo">
+            <img src="{{domain.imageUrl}}" class="img-responsive" alt="">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+
+
+  <app-footer></app-footer>
+
+</div>
