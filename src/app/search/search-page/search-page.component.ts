@@ -4,6 +4,8 @@ import { Domain } from '../../common/models/domain.model';
 import { Category } from 'src/app/common/models/category.model';
 import { CategoryService } from 'src/app/common/services/category.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HeaderService } from 'src/app/common/services/header.service';
+import { SearchWordService } from 'src/app/common/services/search-word.service';
 
 export interface Filter {
   label: string;
@@ -33,16 +35,16 @@ export class SearchPageComponent implements OnInit {
   filters: Filter[] = [
     { label: "Relevant", type: "r" },
     { label: "Lowest Price", type: "lp" },
-    { label: "Highest Price", type: "hp" },
-    { label: "Longest Name", type: "ln" },
-    { label: "Shortest Name", type: "sn" }
+    { label: "Highest Price", type: "hp" }
   ];
 
   constructor(
     private domainService: DomainService,
     private categoryService: CategoryService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private headerService: HeaderService,
+    private searchWordService: SearchWordService,
   ) { }
 
   ngOnInit() {
@@ -51,11 +53,14 @@ export class SearchPageComponent implements OnInit {
 
     this.route.paramMap.subscribe(params => {
       this.searchTerm = params.get("term");
+
       if (this.searchTerm) {
         this.getSearchDomainDetails(this.searchTerm);
-        console.log("getDomainDetails::route->", this.searchTerm);
       }
     });
+
+
+    this.headerService.changeMessage(true);
 
 
   }
@@ -85,8 +90,8 @@ export class SearchPageComponent implements OnInit {
         return (prev.salePrice < curr.salePrice) ? prev : curr;
       }).salePrice;
 
-      console.log("getDomainDetails->", this.maxAmount);
-      console.log("getDomainDetails->", this.minAmount);
+      //console.log("getDomainDetails->", this.maxAmount);
+      //console.log("getDomainDetails->", this.minAmount);
 
       this.amountFilterValue = this.maxAmount;
     })
@@ -94,16 +99,21 @@ export class SearchPageComponent implements OnInit {
 
   getSearchDomainDetails(term: string) {
 
+    //console.log("getSearchDomainDetails->term", term);
+
     this.domainService.getDomains().subscribe((response) => {
       this.domains = response;
 
       this.domains = this.domains.filter(domain => {
+
         let keywords = domain.keyWords.map(keyword => keyword.toLowerCase());
-        if (domain.name.toLowerCase().includes(term.toLowerCase()) || keywords.includes(term.toLowerCase())) {
+        let categories = domain.category.map(keyword => keyword.name.toLowerCase());
+
+        if (domain.name.toLowerCase().includes(term.toLowerCase()) || keywords.includes(term.toLowerCase()) || categories.includes(term.toLowerCase())) {
           return true;
         }
       });
-      console.log("getSearchDomainDetails->", this.domains);
+      //console.log("getSearchDomainDetails->", this.domains);
     })
   }
 
@@ -112,7 +122,7 @@ export class SearchPageComponent implements OnInit {
 
 
     let length = event.value;
-    console.log("filterDomainsOnLength->", length);
+    //console.log("filterDomainsOnLength->", length);
 
     this.domains = this.allDomains.filter(domain => {
       return domain.name.length <= length;
@@ -125,7 +135,7 @@ export class SearchPageComponent implements OnInit {
 
 
     let price = event.value;
-    console.log("filterDomainsOnPrice->", price);
+    //console.log("filterDomainsOnPrice->", price);
 
     this.domains = this.allDomains.filter(domain => {
       return domain.salePrice <= price;
@@ -148,7 +158,7 @@ export class SearchPageComponent implements OnInit {
         }
       )
     });
-    console.log("getCatDomainDetails->", this.domains);
+    //console.log("getCatDomainDetails->", this.domains);
 
 
   }
@@ -162,17 +172,17 @@ export class SearchPageComponent implements OnInit {
         newCategory.name = name[0].toUpperCase() + name.slice(1);
         return newCategory;
       });
-      console.log("getDomainDetails->", this.categories);
+      //console.log("getDomainDetails->", this.categories);
     })
   }
 
   searchDomains(event) {
-    console.log("searchDomains->", event);
+    //console.log("searchDomains->", event);
     this.getSearchDomainDetails(event);
   }
 
   addFilters(event) {
-    console.log("addFilters->event", event.target.value);
+    //console.log("addFilters->event", event.target.value);
 
     let filter = event.target.value;
 
@@ -232,11 +242,35 @@ export class SearchPageComponent implements OnInit {
 
   }
 
+  randomColorGenerator() {
+    let color = ['#ef5350', '#ec407a', '#ab47bc', '#7e57c2', '#5c6bc0', '#2196f3', '#039be5', '#0097a7', '#26a69a', '#43a047', '#689f38', '#ef6c00', '#ff5722'];
+    return color[Math.floor(Math.random() * 13)];
+  }
+
+  randomFontGenerator() {
+    let fontType = ['BioRhyme', 'Roboto', 'Calistoga', 'Lato', 'Playfair Display'];
+    return fontType[Math.floor(Math.random() * 5)];
+  }
+
 
 
   openDomainDetail(id) {
-    console.log("openDomainDetail->", id);
+    //console.log("openDomainDetail->", id);
     this.router.navigateByUrl("/domain/" + id);
   }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

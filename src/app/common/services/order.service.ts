@@ -57,7 +57,6 @@ export class OrderService {
 
     const id = this.afs.createId();
     if (!order.id) {
-
       order.id = id;
     }
     order.creationDate = new Date();

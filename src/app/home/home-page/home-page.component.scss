@@ -1,88 +1,8 @@
 @import "../../../assets/styles/common.scss";
 
 .home {
-  background: #4DB6AC;
+  background: #29b6f6;
   color: #fff;
-}
-
-.navbar {
-  width: 100%;
-  background: #4DB6AC;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  border: 0;
-  min-height: 86px;
-
-  position: fixed;
-  right: 0;
-  left: 0;
-  top: 0;
-  z-index: 1030;
-
-  .navbar-content {
-    width: 100%;
-    display: flex;
-    align-items: center;
-  }
-
-  .navbar-left {
-    flex: 0 1 auto;
-    width: 100px;
-    min-width: 70px;
-  }
-
-  .navbar-middle {
-    flex: 1;
-
-    .nav {
-      list-style: none;
-    }
-
-    ul {
-      float: right;
-      display: block;
-      list-style-type: disc;
-      margin-block-start: 1em;
-      margin-block-end: 1em;
-      margin-inline-start: 0px;
-      margin-inline-end: 0px;
-      padding-inline-start: 40px;
-
-      li {
-        float: left;
-        position: relative;
-        display: block;
-        text-align: -webkit-match-parent;
-
-        a {
-          color: #fff;
-          opacity: 1;
-          padding-left: 15px;
-          padding-right: 15px;
-          text-decoration: none;
-        }
-      }
-    }
-  }
-
-  .navbar-space {
-    flex: 1 1 auto;
-  }
-
-  .navbar-brand {
-    float: left;
-    height: 50px;
-    padding: 8px 8px;
-
-    img {
-      width: 100%;
-      height: auto;
-      margin-top: 8px;
-      vertical-align: middle;
-    }
-  }
-
-
 }
 
 
@@ -91,29 +11,44 @@
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  min-height: 60vh;
+
+  .jumbotron {
+    background: transparent;
+    margin-top: 8vh;
+    margin-bottom: 4vh;
+    padding-top: 48px;
+    padding-bottom: 36px;
+    color: #fff;
+    text-align: center;
+  }
+
+  .jumbotron .search-control {
+    max-width: 500px;
+    margin: 30px auto 0;
+  }
+
+  .jumbotron h1 {
+    font-size: 47px;
+    margin-bottom: 15px;
+  }
+
+
+
 }
 
-.jumbotron {
-  background: transparent;
-  margin-top: 8vh;
-  margin-bottom: 4vh;
-  padding-top: 48px;
-  padding-bottom: 36px;
-  color: #fff;
+
+.lead {
+  opacity: 1;
+  margin: 36px;
+  font-size: 21px;
+  font-weight: 200;
   text-align: center;
+
+  a {
+    color: #000;
+  }
 }
-
-.jumbotron .search-control {
-  max-width: 500px;
-  margin: 30px auto 0;
-}
-
-.jumbotron h1 {
-  font-size: 47px;
-  margin-bottom: 15px;
-}
-
-
 
 
 form {
@@ -122,20 +57,8 @@ form {
 }
 
 
-
-
-.lead {
-  opacity: 1;
-  margin: 36px;
-  font-size: 21px;
-  font-weight: 200;
-
-  a {
-    color: #fff;
-  }
-}
-
 .container-home {
+  margin-top: 8vh;
   background-color: #fff;
   padding: 50px 0;
   color: #000;
@@ -149,36 +72,6 @@ form {
   font-size: 24px;
 }
 
-.details-card {
-  max-width: 300px;
-  font-size: 1.2em;
-
-  margin-bottom: 30px;
-  border: 1px solid #E4E4E4;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-  overflow: hidden;
-  text-align: left;
-  position: relative;
-
-  .domain-image {
-    width: 100%;
-    height: 150px;
-    text-align: center;
-
-    img {
-      vertical-align: middle;
-    }
-  }
-
-
-
-  .row {
-    padding: 8px;
-    padding-left: 16px;
-  }
-}
 
 input[type=text] {
   color: #444;

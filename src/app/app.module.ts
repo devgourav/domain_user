@@ -16,6 +16,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SearchModule } from './search/search.module';
 import { PaymentModule } from './payment/payment.module';
 import { AccountModule } from './account/account.module';
+import { FavouriteService } from './common/services/favourite.service';
+import * as firebase from 'firebase/app';
 
 const ProjectModules = [
   HomeModule,
@@ -43,12 +45,14 @@ const DependencyModules = [
   declarations: [
     AppComponent
   ],
+  providers: [
+    FavouriteService
+  ],
   imports: [
     DependencyModules,
     ProjectModules,
     FontAwesomeModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

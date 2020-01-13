@@ -1,125 +1,147 @@
 <div class="wrapper">
 
-  <app-header [isSearch]="true" (searchTerm)="searchDomains($event)"></app-header>
+  <!-- <app-header [isSearch]="true" (searchTerm)="searchDomains($event)"></app-header> -->
   <div class="container domain-result">
     <div class="row">
+      <div class="col-md-12">
+        <div class="domains-container">
+          <div class="row search-page-header">
 
-      <div class="search-page-header">
+            <div class="col-md-3"></div>
 
-        <div class="sort">
-
-          <div class="form-inline pure-form">
-            <label for="filter">Sort by:</label>
-
-            <select id="filter" class="form-control" matNativeControl required (click)="addFilters($event)">
-              <option *ngFor="let filter of filters" [value]="filter.type">
-                {{filter.label}}
-              </option>
-            </select>
-
-          </div>
-
-        </div>
-        <div class="header">
-          <h1>Domain names for sale</h1>
-        </div>
-        <div class="filter-summary"></div>
-
-      </div>
-
-      <div class="sidebar">
-        <div>
-          <div class="spacer"></div>
-          <div class="accordion expanded industry">
-            <div class="toggle">
-              <h3>Categories</h3>
+            <div class="col-md-5 col-xs-12">
+              <div class="header">
+                <h1>Domain names for sale</h1>
+              </div>
             </div>
-            <div class="body expanded">
-              <div>
 
 
+            <div class="col-md-4">
+              <div class="sort">
 
-                <div class="pure-form">
+                <div class="form-inline pure-form">
+                  <label for="filter">Sort by:</label>
 
-                  <label for="cat-option" class="pure-radio">
-                    <input id="cat-option" type="radio" value="all" [checked]="true" (click)="getDomainDetails()"
-                      name="optionCat">
-                    <span>All Category</span>
-                  </label>
-
-
-
-
-                  <label for="cat-option" *ngFor="let category of categories" class="pure-radio">
-                    <input id="cat-option" type="radio" value="{{category.name}}" [checked]="isRestCategory"
-                      (click)="getCatDomainDetails(category.name)" name="optionCat">
-                    <span>{{category.name}}</span>
-                  </label>
-                </div>
-
-                <div class="slider-filter">
-
-
-                  <h4>Select Max Length ( {{minLength}} - {{maxLength}} )</h4>
-
-
-                  <mat-slider [max]="maxLength" [min]="minLength" [thumbLabel]=true [(ngModel)]="lengthFilterValue"
-                    (change)="filterDomainsOnLength($event)">
-                  </mat-slider>
-
-
-
-
-
-                  <h4>Select Max Amt ( {{minAmount | currency:"USD"}} - {{maxAmount | currency:"USD"}} )</h4>
-
-
-                  <mat-slider [max]="maxAmount" [min]="minAmount" [thumbLabel]=true [(ngModel)]="amountFilterValue"
-                    (change)="filterDomainsOnPrice($event)">
-                  </mat-slider>
-
+                  <select id="filter" class="form-control" matNativeControl required (click)="addFilters($event)">
+                    <option *ngFor="let filter of filters" [value]="filter.type">
+                      {{filter.label}}
+                    </option>
+                  </select>
 
                 </div>
-
-
-
 
               </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="content">
-        <div class="results">
+
+
+
+            <div class="filter-summary"></div>
+
+          </div>
+
 
           <div class="row">
-            <div class="col-md-3 col-xs-6" *ngFor="let domain of domains">
+
+            <div class="col-md-3">
+              <div class="sidebar">
+                <div>
+                  <!-- <div class="spacer"></div> -->
+                  <div class="accordion expanded industry">
+                    <div class="toggle">
+                      <h3>Categories</h3>
+                    </div>
+                    <div class="body expanded">
+                      <div>
 
 
-              <div class="details-card">
-                <img class="domain-image" mat-card-image src="{{domain.imageUrl}}" alt="logo"
-                  (click)="openDomainDetail(domain.id)">
 
-                <div class="row">
-                  <div class="col-sm-7">
-                    <span class="price strike-text">{{domain.name.toLowerCase()}}</span>
-                  </div>
-                  <div class="col-sm-5">
-                    <span class="price">{{domain.salePrice | currency:"USD"}}</span>
+                        <div class="pure-form">
+
+                          <label for="cat-option" class="pure-radio">
+                            <input id="cat-option" type="radio" value="all" (click)="getDomainDetails()"
+                              name="optionCat">
+                            <span>All Category</span>
+                          </label>
+
+
+
+
+                          <label for="cat-option" *ngFor="let category of categories" class="pure-radio">
+                            <input id="cat-option" type="radio" value="{{category.name}}"
+                              [checked]="isRestCategory || category.name == searchTerm"
+                              (click)="getCatDomainDetails(category.name)" name="optionCat">
+                            <span>{{category.name}}</span>
+                          </label>
+                        </div>
+
+                        <div class="slider-filter">
+
+
+                          <h4>Select Max Length ( {{minLength}} - {{maxLength}} )</h4>
+
+
+                          <mat-slider [max]="maxLength" [min]="minLength" [thumbLabel]=true
+                            [(ngModel)]="lengthFilterValue" (change)="filterDomainsOnLength($event)">
+                          </mat-slider>
+
+
+
+
+
+                          <h4>Select Max Amt ( {{minAmount | currency:"USD"}} - {{maxAmount | currency:"USD"}} )</h4>
+
+
+                          <mat-slider [max]="maxAmount" [min]="minAmount" [thumbLabel]=true
+                            [(ngModel)]="amountFilterValue" (change)="filterDomainsOnPrice($event)">
+                          </mat-slider>
+
+
+                        </div>
+
+
+
+
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+            <div class="col-md-9 col-xs-12">
+              <div class="content">
+                <div class="results">
+
+                  <div class="row">
+                    <div class="col-md-3 col-xs-12" *ngFor="let domain of domains">
+
+
+
+                      <app-domain-card [domain]="domain"></app-domain-card>
+
+
+
+                    </div>
+                  </div>
+
+
+
+                </div>
+              </div>
+            </div>
+
           </div>
+
 
 
 
         </div>
       </div>
+
+
 
     </div>
   </div>
-</div>
 
-<app-footer></app-footer>
+  <app-footer></app-footer>
+</div>

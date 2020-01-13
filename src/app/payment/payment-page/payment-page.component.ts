@@ -7,6 +7,7 @@ import { Order } from 'src/app/common/models/order.model';
 import { AccountService } from 'src/app/common/services/account.service';
 import { Account } from '../../common/models/account.model';
 import * as firebase from 'firebase';
+import { HeaderService } from 'src/app/common/services/header.service';
 
 declare var paypal: any;
 
@@ -29,12 +30,15 @@ export class PaymentPageComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private orderService: OrderService,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private headerService: HeaderService
   ) { }
 
   ngOnInit() {
 
     this.fetchAccountByUid();
+
+    this.headerService.changeMessage(false);
 
     this.route.paramMap.subscribe(params => {
       this.domainId = params.get("domain");
@@ -113,13 +117,25 @@ export class PaymentPageComponent implements OnInit {
               console.log("Domain Updated as Sold");
               this.router.navigateByUrl("payment/confirm/" + this.order.paymentId);
             })
-          })
+          });
+
         },
         onError: err => {
           console.log(err);
         }
       })
       .render(this.paypalElement.nativeElement);
+  }
+
+
+  randomColorGenerator() {
+    let color = ['#ef5350', '#ec407a', '#ab47bc', '#7e57c2', '#5c6bc0', '#2196f3', '#039be5', '#0097a7', '#26a69a', '#43a047', '#689f38', '#ef6c00', '#ff5722'];
+    return color[Math.floor(Math.random() * 13)];
+  }
+
+  randomFontGenerator() {
+    let fontType = ['BioRhyme', 'Roboto', 'Calistoga', 'Lato', 'Playfair Display'];
+    return fontType[Math.floor(Math.random() * 5)];
   }
 
 

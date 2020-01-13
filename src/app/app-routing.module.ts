@@ -9,7 +9,7 @@ import { AuthGuard } from './shared/guards/auth.guard';
 import { UserAccountComponent } from './account/user-account/user-account.component';
 import { UserOrderComponent } from './account/user-order/user-order.component';
 import { PaymentConfirmComponent } from './payment/payment-confirm/payment-confirm.component';
-
+import { FavouriteDetailsComponent } from './account/favourite-details/favourite-details.component';
 const routes: Routes = [
   {
     path: '',
@@ -50,6 +50,10 @@ const routes: Routes = [
     path: 'order',
     component: UserOrderComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'favourite',
+    component: FavouriteDetailsComponent
   }
 ];
 

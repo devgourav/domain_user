@@ -1,0 +1,33 @@
+@import "../../../assets/styles/common.scss";
+
+
+
+.account-detail {
+  margin-top: 16vh;
+  line-height: 1.9em;
+  color: #333;
+}
+
+
+.search-page-header {
+
+  border-bottom: 1px solid #eee;
+  width: 80%;
+
+
+  padding: 14px 1em;
+  height: 64px;
+
+  .header {
+    float: left;
+    display: block;
+
+    h1 {
+      margin-left: 16px;
+      font-size: 22px;
+      display: inline-block;
+      white-space: nowrap;
+      text-align: start;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+<div class="wrapper">
+
+  <div class="container account-detail">
+
+    <div class="search-page-header">
+      <div class="header">
+        <h1>My Shortlisted Domains</h1>
+      </div>
+    </div>
+
+    <div class="fav-details">
+
+      <div class="row">
+        <div class="col-md-3 col-xs-6" *ngFor="let domain of favDomains">
+
+
+          <app-domain-card [domain]="domain"></app-domain-card>
+
+
+
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="order-container" *ngIf="favDomains.length < 1">
+
+      <div class="empty-container">
+      </div>
+
+      <p>No Domain Shortlisted. <span><a href="/search">Explore Domains</a></span></p>
+    </div>
+
+
+
+
+
+
+  </div>
+
+  <app-footer></app-footer>
+
+</div>

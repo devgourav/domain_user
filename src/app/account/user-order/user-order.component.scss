@@ -1,6 +1,6 @@
 @import "../../../assets/styles/common.scss";
 
-.order-detail {
+.container {
   margin-top: 16vh;
   line-height: 1.9em;
   color: #333;
@@ -32,7 +32,7 @@
 
   .row {
     margin-top: 16px;
-    font-size: 1.2em;
+    font-size: 18px;
 
     a {
       span {
@@ -53,15 +53,62 @@ table {
   border-style: none;
 }
 
-td.mat-cell {
+
+mat-cell {
   border-bottom-style: none;
   color: #58666e;
-  font-size: 1.1em;
+  font-size: 18px;
 }
 
-th.mat-header-cell {
+
+
+mat-header-cell {
   border-bottom-style: none;
-  font-size: 1em;
+  font-size: 16px;
   font-weight: 500;
   color: #58666e;
+}
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  min-width: 300px;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.mobile-label {
+  display: none;
+}
+
+@media(max-width: 767px) {
+  .mobile-label {
+    width: 80px;
+    display: inline-block;
+    font-weight: bold;
+  }
+
+  mat-header-row {
+    display: none;
+  }
+
+  mat-row {
+    flex-direction: column;
+    align-items: start;
+    padding: 8px 24px;
+  }
+
+  mat-cell {
+    font-size: 14px;
+  }
+
+
+
+  mat-cell:first-of-type {
+    padding: 0px;
+  }
 }

@@ -1,0 +1,29 @@
+<div class="details-card">
+
+  <div class="img-container" [style.background-color]="domain.color" (click)="openDomainDetail(domain.id)">
+    <div class="img-text" [style.font-family]="domain.font">{{domain.name | lowercase}}</div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-10">
+      <span>{{domain.name | lowercase}}.{{domain.extension | lowercase}}</span>
+    </div>
+    <div class="col-sm-2">
+
+
+      <button class="btn-star" (click)="addFavourite(domain)">
+        <fa-icon [icon]="faStar" size="1x"></fa-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <span class="price strike-text">{{domain.price | currency:"USD"}}</span>
+    </div>
+    <div class="col-sm-6">
+      <span class="price">{{domain.salePrice | currency:"USD"}}</span>
+    </div>
+  </div>
+
+</div>

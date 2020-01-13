@@ -56,7 +56,6 @@ export class AccountService {
 
     const id = this.afs.createId();
     if (!account.id) {
-
       account.id = id;
     }
     account.creationDate = new Date();

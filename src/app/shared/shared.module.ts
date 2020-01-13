@@ -34,6 +34,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoginComponent } from './login/login.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { FirebaseUIModule, firebase, firebaseui } from 'firebaseui-angular';
+import { DomainCardComponent } from './domain-card/domain-card.component';
 
 
 
@@ -92,7 +93,8 @@ const DependencyModules = [
 ];
 
 const SharedComponents = [
-  LoginComponent
+  LoginComponent,
+  DomainCardComponent
 ];
 
 
