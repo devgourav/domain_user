@@ -62,3 +62,16 @@
   background-color: #fff;
   border: none;
 }
+
+@media (max-width: 768px) {
+
+
+  .details-card {
+    font-size: 0.9em;
+    width: 100%;
+  }
+
+  .img-text {
+    font-size: 1.1em;
+  }
+}

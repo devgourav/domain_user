@@ -35,7 +35,9 @@ export class SearchPageComponent implements OnInit {
   filters: Filter[] = [
     { label: "Relevant", type: "r" },
     { label: "Lowest Price", type: "lp" },
-    { label: "Highest Price", type: "hp" }
+    { label: "Highest Price", type: "hp" },
+    { label: "New Arrivals", type: "r" },
+    { label: "Trending", type: "tr" }
   ];
 
   constructor(
@@ -229,6 +231,22 @@ export class SearchPageComponent implements OnInit {
         })
         break;
       case "r":
+        this.domains = this.domains.sort((domain1, domain2) => {
+          if (domain1.creationDate > domain2.creationDate) {
+            return -1;
+          }
+          if (domain1.creationDate < domain2.creationDate) {
+            return 1;
+          }
+        })
+        break;
+      case "tr":
+        this.domainService.getHotDomains().subscribe(response => {
+          this.domains = response;
+        })
+        break;
+
+      default:
         this.domains = this.domains.sort((domain1, domain2) => {
           if (domain1.creationDate > domain2.creationDate) {
             return -1;

@@ -30,9 +30,13 @@ export class DomainCardComponent implements OnInit {
   ngOnInit() {
     let user = firebase.auth().currentUser;
 
-    this.accountService.getAccountByUid(user.uid).subscribe(response => {
-      this.account = response[0];
-    });
+    if (user) {
+      this.accountService.getAccountByUid(user.uid).subscribe(response => {
+        this.account = response[0];
+      });
+    }
+
+
   }
 
   openDomainDetail(id) {
