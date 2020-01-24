@@ -18,6 +18,11 @@ import { PaymentModule } from './payment/payment.module';
 import { AccountModule } from './account/account.module';
 import { FavouriteService } from './common/services/favourite.service';
 import * as firebase from 'firebase/app';
+import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from 'ng-recaptcha';
+import { AngularFireFunctionsModule } from '@angular/fire/functions';
+
+
+
 
 const ProjectModules = [
   HomeModule,
@@ -28,6 +33,7 @@ const ProjectModules = [
 
 const DependencyModules = [
   BrowserModule,
+  RecaptchaV3Module,
   AppRoutingModule,
   ProjectModules,
   BrowserAnimationsModule,
@@ -38,6 +44,7 @@ const DependencyModules = [
   AngularFireAuthModule,
   AngularFireStorageModule,
   AngularFirestoreModule,
+  AngularFireFunctionsModule
 
 ];
 
@@ -46,7 +53,8 @@ const DependencyModules = [
     AppComponent
   ],
   providers: [
-    FavouriteService
+    FavouriteService,
+    { provide: RECAPTCHA_V3_SITE_KEY, useValue: '6Ld6kM8UAAAAAJkzPYdO9_7DdZern7rfJwMj1H4f' },
   ],
   imports: [
     DependencyModules,

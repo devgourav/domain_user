@@ -6,13 +6,13 @@
   <div class="container single-word" *ngIf="domain">
 
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-xs-12">
         <div class="visible-xs-block">
           <div class="domain-logo">
 
             <div class="img-container" [style.background-color]="domain.color">
               <div class="img-text" [style.font-family]="domain.font">
-                {{domain.name.toLowerCase()}}</div>
+                {{domain.name | lowercase}}</div>
             </div>
 
           </div>
@@ -21,7 +21,7 @@
 
         <h1 class="word-breakable">
           <span class="lead">The domain name</span>
-          <a [attr.href]="'http://' + domain.name">{{domain.name}}</a>
+          <a [attr.href]="'http://' + domain.name">{{domain.name | lowercase}}.{{domain.extension | lowercase}}</a>
           <span class="small">
             is for sale
           </span>
@@ -41,15 +41,15 @@
         <div class="col-md-6 col-xs-12">
           <h4>What you get:</h4>
           <ul class="get-list">
-            <li>Domain name: <b>{{domain.name}}</b>
+            <li>Domain name: <b>{{domain.name | lowercase}}.{{domain.extension | lowercase}}</b>
             </li>
-            <li>Logo design</li>
+            <li>Excellent Customer Support</li>
           </ul>
 
           <div class="price-box">
             <div class="price-box-desc">
 
-              <h4>Buy {{domain.name}}</h4>
+              <h4>Buy {{domain.name | lowercase}}.{{domain.extension | lowercase}}</h4>
               <div class="price-box-value">
 
                 <div id="regular-price">
@@ -68,25 +68,23 @@
               <div class="price-box-buttons">
 
                 <div class="row">
-                  <div class="col-xs-6">
-                    <button class="btn btn-lg btn-buy" id="buy-button" (click)="openPaymentPage(domain.id)"
-                      [style.background-color]="domain.color">
+                  <div class="col-md-6 col-xs-12">
+                    <button class="btn btn-lg btn-buy" id="buy-button" (click)="openPaymentPage(domain.id)">
                       <fa-icon [icon]="faCheck" size="1x"></fa-icon>
                       <span id="buy-now-text">Buy now</span>
                     </button>
                   </div>
-                  <div class="col-xs-6">
-                    <button class="btn btn-lg btn-buy" id="buy-button" (click)="addFavourite(domain)"
-                      [style.background-color]="domain.color">
+                  <div class="col-md-6 col-xs-12">
+                    <button class="btn btn-lg btn-buy" id="shortlist-button" (click)="addFavourite(domain)">
                       <fa-icon [icon]="faStar" size="1x"></fa-icon>
                       <span id="buy-now-text">Shortlist</span>
                     </button>
                   </div>
                 </div>
 
-                <div class="row offer">
-                  <div class="col-xs-6">
-                    <a href="">Make a Offer</a>
+                <div class="row offer" (click)="scroll()">
+                  <div class="col-md-6 col-xs-12">
+                    <span>Make a Offer</span>
                   </div>
                 </div>
 
@@ -147,6 +145,10 @@
       </div>
     </div>
 
+  </div>
+
+  <div class="offer-form" *ngIf="domain" #offerForm>
+    <app-offer-form [domainName]="domain.name"></app-offer-form>
   </div>
 
   <app-footer></app-footer>

@@ -146,9 +146,17 @@ a.btn-tag {
       margin-left: 8px;
     }
 
+    #shortlist-button {
+      background-color: #fff;
+      color: #052F6D;
+      border: 1px solid #052F6D;
+    }
+
+
     .offer {
       margin-top: 16px;
-      font-size: 0.9em;
+      color: #052F6D;
+      cursor: pointer;
     }
   }
 
@@ -156,7 +164,7 @@ a.btn-tag {
     width: 100%;
     font-weight: normal;
     font-size: 1.1em;
-    background: #29b6f6;
+    background: #052F6D;
     color: #fff;
     border: 0;
     padding: 6px 14px;
@@ -196,13 +204,17 @@ a.btn-tag {
   display: none !important;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .hidden-xs {
     display: none !important;
   }
 
   .visible-xs-block {
     display: block !important;
+  }
+
+  #shortlist-button {
+    margin-top: 16px;
   }
 }
 

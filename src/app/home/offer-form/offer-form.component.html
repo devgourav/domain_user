@@ -1,0 +1,42 @@
+<div class="title-text">
+  <h3>Inquire/Make a Offer</h3>
+</div>
+<form class="pure-form pure-form-stacked form-container" [formGroup]="mailOfferForm">
+  <fieldset>
+
+    <div class="pure-control-group">
+      <input id="name" type="text" placeholder="Name" formControlName="name">
+      <!-- <span class="pure-form-message">This is a required field.</span> -->
+    </div>
+
+
+    <div class="pure-control-group">
+      <input id="email" type="email" placeholder="Email" formControlName="email">
+      <!-- <span class="pure-form-message">This is a required field.</span> -->
+    </div>
+
+
+    <div class="pure-control-group">
+      <input id="phoneNo" type="tel" placeholder="Country Code - Phone No." formControlName="phoneNo">
+      <!-- <span class="pure-form-message">This is a required field.</span> -->
+    </div>
+
+    <div class="pure-control-group">
+      <input id="offer" type="number" placeholder="Offer(in USD$)" formControlName="offer">
+      <!-- <span class="pure-form-message">This is a required field.</span> -->
+    </div>
+
+    <div class="pure-control-group">
+      <input id="message" type="text" placeholder="Message" formControlName="message">
+      <!-- <span class="pure-form-message">This is a required field.</span> -->
+    </div>
+
+    <div class="row center-md center-xs">
+      <div class="col">
+        <button type="button" class="pure-button send-button" (click)="sendMail()">Make Offer</button>
+      </div>
+    </div>
+
+
+  </fieldset>
+</form>

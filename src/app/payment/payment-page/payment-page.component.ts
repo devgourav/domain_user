@@ -80,7 +80,7 @@ export class PaymentPageComponent implements OnInit {
           return actions.order.create({
             purchase_units: [
               {
-                description: this.domain.name,
+                description: this.domain.name + "." + this.domain.extension,
                 amount: {
                   currency_code: 'USD',
                   value: this.domain.salePrice

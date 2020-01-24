@@ -8,11 +8,12 @@ import { DomainDetailComponent } from './domain-detail/domain-detail.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from '../shared/login/login.component';
+import { OfferFormComponent } from './offer-form/offer-form.component';
 
 
 @NgModule({
   entryComponents: [LoginComponent],
-  declarations: [HomePageComponent, DomainDetailComponent, FooterComponent, HeaderComponent],
+  declarations: [HomePageComponent, DomainDetailComponent, FooterComponent, HeaderComponent, OfferFormComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

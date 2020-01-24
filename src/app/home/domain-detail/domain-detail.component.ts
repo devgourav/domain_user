@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { Domain } from 'src/app/common/models/domain.model';
 import { DomainService } from 'src/app/common/services/domain.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,6 +10,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import * as firebase from 'firebase';
 import { Account } from 'src/app/common/models/account.model';
 import { AccountService } from 'src/app/common/services/account.service';
+
+
 
 
 
@@ -44,10 +46,15 @@ export class DomainDetailComponent implements OnInit {
     private favouriteService: FavouriteService,
     private snackBar: MatSnackBar,
     private headerService: HeaderService,
+
   ) { }
 
+  @ViewChild('offerForm', { static: false }) targetEl: ElementRef;
 
   ngOnInit() {
+
+
+
 
 
 
@@ -105,6 +112,10 @@ export class DomainDetailComponent implements OnInit {
     this.snackBar.open('Added to Favourites', '', {
       duration: 2500
     })
+  }
+
+  scroll() {
+    this.targetEl.nativeElement.scrollIntoView({ block: 'start', behavior: 'smooth' });
   }
 
 

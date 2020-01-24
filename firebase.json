@@ -9,7 +9,7 @@
     ]
   },
   "hosting": {
-    "site": "domain-user-51bd1",
+    "site": "namoyo-web-e9bcf",
     "public": "public",
     "ignore": [
       "firebase.json",
@@ -20,8 +20,5 @@
       "source": "**",
       "destination": "/index.html"
     }]
-  },
-  "storage": {
-    "rules": "storage.rules"
   }
 }
