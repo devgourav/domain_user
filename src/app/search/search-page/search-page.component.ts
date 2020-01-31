@@ -23,6 +23,7 @@ export class SearchPageComponent implements OnInit {
   allDomains: Domain[] = [];
   searchTerm: string;
   isAllCategory: boolean = true;
+  categoryCheckbox: boolean;
 
   maxLength: number = 0;
   minLength: number = 0;
@@ -31,6 +32,7 @@ export class SearchPageComponent implements OnInit {
   maxAmount: number = 0;
   minAmount: number = 0;
   amountFilterValue: number = 0;
+  selectedCategories: string[] = [];
 
   filters: Filter[] = [
     { label: "Relevant", type: "r" },
@@ -67,7 +69,14 @@ export class SearchPageComponent implements OnInit {
 
   }
 
+
+
+
   getDomainDetails() {
+
+    this.categoryCheckbox = false;
+
+
     this.domainService.getDomains().subscribe((response) => {
       this.domains = response;
       this.allDomains = response;
@@ -106,15 +115,23 @@ export class SearchPageComponent implements OnInit {
     this.domainService.getDomains().subscribe((response) => {
       this.domains = response;
 
-      this.domains = this.domains.filter(domain => {
+      if (term.toLowerCase() == 'all') {
+        this.domains = response;
+      } else {
 
-        let keywords = domain.keyWords.map(keyword => keyword.toLowerCase());
-        let categories = domain.category.map(keyword => keyword.name.toLowerCase());
+        this.domains = this.domains.filter(domain => {
 
-        if (domain.name.toLowerCase().includes(term.toLowerCase()) || keywords.includes(term.toLowerCase()) || categories.includes(term.toLowerCase())) {
-          return true;
-        }
-      });
+          let keywords = domain.keyWords.map(keyword => keyword.toLowerCase());
+          let categories = domain.category.map(keyword => keyword.name.toLowerCase());
+
+          if (domain.name.toLowerCase().includes(term.toLowerCase()) || keywords.includes(term.toLowerCase()) || categories.includes(term.toLowerCase())) {
+            return true;
+          }
+        });
+
+      }
+
+
       //console.log("getSearchDomainDetails->", this.domains);
     })
   }
@@ -147,20 +164,83 @@ export class SearchPageComponent implements OnInit {
   }
 
 
-  getCatDomainDetails(categoryName: string) {
+  // getAllDomains(event) {
+
+  //   let isChecked: boolean = event.target.checked;
+
+  //   if (isChecked) {
+  //     this.selectedCategories.push("all");
+  //     this.domains = this.allDomains;
+  //   } else {
+
+  //     var index = this.selectedCategories.findIndex(cat => {
+  //       return cat == "all"
+  //     });
+  //     this.selectedCategories.splice(index, 1);
+
+
+  //     if (this.selectedCategories.length > 0) {
+  //       this.domains = this.allDomains.filter(domain => {
+  //         return domain.category.some(
+  //           cat => {
+  //             return this.selectedCategories.includes(cat.name.toLowerCase());
+  //           }
+  //         )
+  //       });
+  //     } else {
+  //       this.domains = this.allDomains;
+  //     }
+
+
+  //   }
+
+  // }
+
+
+  getCatDomainDetails(event) {
+
+    let isChecked: boolean = event.target.checked;
+    let value: string = event.target.value;
+    let selectedCategory = value.toLowerCase();
+
+    console.log("getCatDomainDetails:selectedCategory->", selectedCategory);
 
     this.isAllCategory = false;
 
+    if (isChecked) {
+      this.selectedCategories.push(selectedCategory);
+    } else {
+      var index = this.selectedCategories.findIndex(cat => {
+        // console.log("getCatDomainDetails:cat->", cat);
+        // console.log("getCatDomainDetails:selectedCategory->", selectedCategory);
+        return cat.toLowerCase() == selectedCategory;
+      });
 
-    this.domains = this.allDomains.filter(domain => {
-      return domain.category.some(
-        cat => {
-          let x = cat.name.toLowerCase() == categoryName.toLowerCase();
-          return x;
-        }
-      )
-    });
-    //console.log("getCatDomainDetails->", this.domains);
+      console.log("getCatDomainDetails:index->", index);
+
+      this.selectedCategories.splice(index, 1);
+    }
+
+    console.log("getCatDomainDetails:sc->", this.selectedCategories);
+
+
+    if (this.selectedCategories.length > 0 && !this.selectedCategories.includes("all")) {
+
+
+      this.domains = this.allDomains.filter(domain => {
+        return domain.category.some(
+          cat => {
+            return this.selectedCategories.includes(cat.name.toLowerCase());
+          }
+        )
+      });
+    } else {
+
+      this.domains = this.allDomains;
+    }
+
+
+
 
 
   }

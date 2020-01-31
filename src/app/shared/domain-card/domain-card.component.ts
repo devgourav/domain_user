@@ -18,6 +18,7 @@ export class DomainCardComponent implements OnInit {
   @Input() domain: Domain;
   faStar = faStar;
   account: Account;
+  private snackBar: MatSnackBar;
 
 
   constructor(
@@ -45,7 +46,12 @@ export class DomainCardComponent implements OnInit {
   }
 
   addFavourite(domain: Domain) {
+
     this.favouriteService.setLocalFavourite(domain, this.account);
+
+    this.snackBar.open('Added to Favourites', '', {
+      duration: 2500
+    })
   }
 
 }

@@ -1,0 +1,18 @@
+.wrapper {
+  min-height: 100%;
+
+}
+
+.container {
+  padding-top: 12vh;
+  padding-bottom: 6vh;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+@media (min-width: 992px) {
+  .container {
+    padding-left: 128px;
+    padding-right: 128px;
+  }
+}

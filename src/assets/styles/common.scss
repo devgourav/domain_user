@@ -1,6 +1,7 @@
 .wrapper {
   background: #fff;
   height: 100%;
+  margin-top: 10vh;
 }
 
 .search-control {
@@ -15,6 +16,7 @@
 .container {
   padding-right: 15px;
   display: block;
+  padding-top: 64px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
@@ -71,10 +73,6 @@
     width: 1440px;
   }
 
-  .container-nav {
-    width: 1440px;
-    margin: 0 auto;
-  }
 }
 
 @media (min-width: 1200px) {
@@ -82,10 +80,6 @@
     width: 1170px;
   }
 
-  .container-nav {
-    width: 1400px;
-    margin: 0 auto;
-  }
 }
 
 .order-container {

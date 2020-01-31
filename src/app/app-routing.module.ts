@@ -10,6 +10,9 @@ import { UserAccountComponent } from './account/user-account/user-account.compon
 import { UserOrderComponent } from './account/user-order/user-order.component';
 import { PaymentConfirmComponent } from './payment/payment-confirm/payment-confirm.component';
 import { FavouriteDetailsComponent } from './account/favourite-details/favourite-details.component';
+import { TermsPageComponent } from './home/terms-page/terms-page.component';
+import { PolicyPageComponent } from './home/policy-page/policy-page.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -54,6 +57,14 @@ const routes: Routes = [
   {
     path: 'favourite',
     component: FavouriteDetailsComponent
+  },
+  {
+    path: 'terms-and-conditions',
+    component: TermsPageComponent
+  },
+  {
+    path: 'privacy-policy',
+    component: PolicyPageComponent
   }
 ];
 

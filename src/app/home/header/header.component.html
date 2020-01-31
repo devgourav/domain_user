@@ -30,7 +30,7 @@
           <div class="navbar-middle">
             <ul class="nav navbar-nav">
               <li>
-                <a routerLink="/">Domains</a>
+                <a routerLink="/search">All Names</a>
               </li>
 
               <li class="log-in-out" *ngIf="isSignedIn == false">
@@ -92,7 +92,7 @@
 
   <ul>
     <li>
-      <a routerLink="/search">Domains</a>
+      <a routerLink="/">Domains</a>
     </li>
     <li *ngIf="isSignedIn == false">
       <a routerLink="" (click)="domainLogin()">Log in</a>

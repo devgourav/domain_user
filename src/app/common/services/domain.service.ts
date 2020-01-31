@@ -33,7 +33,7 @@ export class DomainService {
   }
 
   getFeauturedDomains(): Observable<Domain[]> {
-    var domainRef = this.afs.collection<Domain>('domains', ref => ref.orderBy('creationDate', 'desc').limit(8));
+    var domainRef = this.afs.collection<Domain>('domains', ref => ref.where('isSold', '==', false).orderBy('salePrice', 'desc').limit(8));
 
     return (this.domains = domainRef.snapshotChanges().pipe(
       map((actions) =>
@@ -46,8 +46,23 @@ export class DomainService {
     ));
   }
 
+  getNewDomains(): Observable<Domain[]> {
+    var domainRef = this.afs.collection<Domain>('domains', ref => ref.where('isSold', '==', false).orderBy('creationDate', 'desc').limit(8));
+
+    return (this.domains = domainRef.snapshotChanges().pipe(
+      map((actions) =>
+        actions.map((a) => {
+          const data = a.payload.doc.data() as Domain;
+          data.id = a.payload.doc.id;
+          return data;
+        })
+      )
+    ));
+  }
+
+
   getHotDomains(): Observable<Domain[]> {
-    var domainRef = this.afs.collection<Domain>('domains', ref => ref.orderBy('visits', 'desc').limit(8));
+    var domainRef = this.afs.collection<Domain>('domains', ref => ref.where('isSold', '==', false).orderBy('visits', 'desc').limit(8));
 
     return (this.domains = domainRef.snapshotChanges().pipe(
       map((actions) =>

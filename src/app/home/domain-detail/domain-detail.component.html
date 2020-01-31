@@ -12,7 +12,7 @@
 
             <div class="img-container" [style.background-color]="domain.color">
               <div class="img-text" [style.font-family]="domain.font">
-                {{domain.name | lowercase}}</div>
+                {{domain.name}}</div>
             </div>
 
           </div>
@@ -109,7 +109,7 @@
 
               <div class="img-container" [style.background-color]="domain.color">
                 <div class="img-text" [style.font-family]="domain.color">
-                  {{domain.name.toLowerCase()}}</div>
+                  {{domain.name}}</div>
               </div>
 
 
@@ -147,9 +147,10 @@
 
   </div>
 
-  <div class="offer-form" *ngIf="domain" #offerForm>
+  <div *ngIf="isOffered && domain" class="offer-form">
     <app-offer-form [domainName]="domain.name"></app-offer-form>
   </div>
+  <div #offerForm></div>
 
   <app-footer></app-footer>
 

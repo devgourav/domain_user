@@ -1,28 +1,28 @@
-<div class="navbar-bottom">
-  <div class="container-nav nav-bottom">
-    <div class="row">
-      <div class="col-md-3 col-xs-12">
+<div class="home">
 
-        <div class="dropdown">
-          <button class="dropbtn">
-            <span>SELECT CATEGORY</span>
-            <fa-icon [icon]="faChevronDown" size="1x"></fa-icon>
-          </button>
-          <div class="dropdown-content">
-            <a *ngFor="let category of categories"
-              [attr.href]="'/search/' + category.name">{{category.name | titlecase}}</a>
+  <div class="navbar-bottom">
+    <div class="container-nav nav-bottom">
+      <div class="row">
+        <div class="col-md-12 col-xs-12">
+
+          <div class="dropdown">
+            <button class="dropbtn">
+              <span>SELECT CATEGORY</span>
+              <fa-icon [icon]="faChevronDown" size="1x"></fa-icon>
+            </button>
+            <div class="dropdown-content">
+              <a [attr.href]="'/search/all'">All Names</a>
+              <a *ngFor="let category of categories"
+                [attr.href]="'/search/' + category.name">{{category.name | titlecase}}</a>
+            </div>
           </div>
+
+
         </div>
 
-
       </div>
-
     </div>
   </div>
-</div>
-
-
-<div class="home">
 
   <div class="container-home">
 
@@ -30,39 +30,42 @@
 
       <div class="row">
         <div class="col-md-12 col-xs-12">
-          <h3 class="small-title">Trending domains for sale</h3>
+          <h3 class="small-title">Trending Names for sale</h3>
           <div class="row">
             <div class="col-md-3 col-xs-6" *ngFor="let domain of hotDomains">
-
-
-
               <app-domain-card [domain]="domain"></app-domain-card>
-
-
             </div>
-
-
           </div>
-
         </div>
       </div>
+
+
+
       <div class="row">
         <div class="col-md-12 col-xs-12">
-          <h3 class="small-title">Featured domains for sale</h3>
+          <h3 class="small-title">New Name Arrivals</h3>
           <div class="row">
             <div class="col-md-3 col-xs-6" *ngFor="let domain of domains">
-
-
               <app-domain-card [domain]="domain"></app-domain-card>
-
-
             </div>
-
-
           </div>
-
         </div>
       </div>
+
+
+      <div class="row">
+        <div class="col-md-12 col-xs-12">
+          <h3 class="small-title">Featured Names</h3>
+          <div class="row">
+            <div class="col-md-3 col-xs-6" *ngFor="let domain of newDomains">
+              <app-domain-card [domain]="domain"></app-domain-card>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
       <p class="lead">
         <a routerLink="/search">Explore All Domains</a>
       </p>

@@ -18,6 +18,9 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 export class HomePageComponent implements OnInit {
   domains: Domain[] = [];
   hotDomains: Domain[] = [];
+  newDomains: Domain[] = [];
+  featuredDomains: Domain[] = [];
+
   searchForm: FormGroup;
   categories: Category[] = [];
   faChevronDown = faChevronDown;
@@ -36,30 +39,28 @@ export class HomePageComponent implements OnInit {
   ngOnInit() {
     this.getDomainDetails();
     this.getHotDomainDetails();
+    this.getNewDomainDetails();
+
     this.fetchCategories();
 
     this.searchForm = this.fb.group({
       term: ["", Validators.required]
     })
-
-
     this.headerService.changeMessage(true);
-
   }
 
 
+  fetchCategories() {
+    this.categoryService.getCategories().subscribe(response => {
+      this.categories = response;
+    })
+  }
 
 
   getDomainDetails() {
     this.domainService.getFeauturedDomains().subscribe((response) => {
       this.domains = response;
       console.log("getFeauturedDomains->", this.domains);
-    })
-  }
-
-  fetchCategories() {
-    this.categoryService.getCategories().subscribe(response => {
-      this.categories = response;
     })
   }
 
@@ -70,6 +71,20 @@ export class HomePageComponent implements OnInit {
     })
   }
 
+  getFeatureDomainDetails() {
+    this.domainService.getFeauturedDomains().subscribe((response) => {
+      this.featuredDomains = response;
+      console.log("getFeatureDomains->", this.featuredDomains);
+    })
+  }
+
+  getNewDomainDetails() {
+    this.domainService.getDomains().subscribe((response) => {
+      this.newDomains = response;
+      console.log("getNewDomains->", this.newDomains);
+    })
+  }
+
   openDomainDetail(id) {
     console.log("openDomainDetail->", id);
     this.router.navigateByUrl("/domain/" + id);
@@ -77,7 +92,6 @@ export class HomePageComponent implements OnInit {
 
   submitSearchForm() {
     let term = this.searchForm.get("term").value;
-
     const searchTerm: SearchWord = {
       term: term
     }

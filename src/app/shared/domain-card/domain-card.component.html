@@ -1,7 +1,12 @@
 <div class="details-card">
 
-  <div class="img-container" [style.background-color]="domain.color" (click)="openDomainDetail(domain.id)">
-    <div class="img-text" [style.font-family]="domain.font">{{domain.name | lowercase}}</div>
+  <div *ngIf="!domain.imageUrl" class="img-container" [style.background-color]="domain.color"
+    (click)="openDomainDetail(domain.id)">
+    <div class="img-text" [style.font-family]="domain.font">{{domain.name}}</div>
+  </div>
+
+  <div *ngIf="domain.imageUrl" class="img-container" (click)="openDomainDetail(domain.id)">
+    <img src="{{domain.imageUrl}}" alt="">
   </div>
 
   <div class="row">
@@ -17,12 +22,14 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row card-bottom">
     <div class="col-md-6 col-xs-12">
-      <span class="price strike-text">{{domain.price | currency:"USD"}}</span>
+      <button class="btn btn-lg btn-buy" id="buy-button" (click)="openDomainDetail(domain.id)">
+        <span id="buy-now-text">Buy now</span>
+      </button>
     </div>
-    <div class="col-md-6 col-xs-12">
-      <span class="price">{{domain.salePrice | currency:"USD"}}</span>
+    <div class="col-md-6 col-xs-12 price-container">
+      <span class="price">{{domain.salePrice | currency:"USD":'symbol':'1.0'}}</span>
     </div>
   </div>
 

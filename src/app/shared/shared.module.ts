@@ -37,7 +37,6 @@ import { FirebaseUIModule, firebase, firebaseui } from 'firebaseui-angular';
 import { DomainCardComponent } from './domain-card/domain-card.component';
 
 
-
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,

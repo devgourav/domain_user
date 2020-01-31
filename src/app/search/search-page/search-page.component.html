@@ -58,9 +58,9 @@
 
                         <div class="pure-form">
 
-                          <label for="cat-option" class="pure-radio">
-                            <input id="cat-option" type="radio" value="all" (click)="getDomainDetails()"
-                              name="optionCat">
+                          <label for="cat-all-option" class="pure-radio">
+                            <input id="cat-all-option" type="checkbox" value="all"
+                              (change)="getCatDomainDetails($event)" name="optionCat">
                             <span>All Category</span>
                           </label>
 
@@ -68,9 +68,9 @@
 
 
                           <label for="cat-option" *ngFor="let category of categories" class="pure-radio">
-                            <input id="cat-option" type="radio" value="{{category.name}}"
+                            <input type="checkbox" value="{{category.name}}"
                               [checked]="isRestCategory || category.name == searchTerm"
-                              (click)="getCatDomainDetails(category.name)" name="optionCat">
+                              (change)="getCatDomainDetails($event)" id="{{category.id}}">
                             <span>{{category.name}}</span>
                           </label>
                         </div>

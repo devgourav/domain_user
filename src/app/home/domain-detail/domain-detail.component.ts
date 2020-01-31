@@ -31,6 +31,8 @@ export class DomainDetailComponent implements OnInit {
   faStar = faStar;
   account: Account;
 
+  isOffered = false;
+
   randomColor = "#fff";
 
 
@@ -115,6 +117,7 @@ export class DomainDetailComponent implements OnInit {
   }
 
   scroll() {
+    this.isOffered = true;
     this.targetEl.nativeElement.scrollIntoView({ block: 'start', behavior: 'smooth' });
   }
 
