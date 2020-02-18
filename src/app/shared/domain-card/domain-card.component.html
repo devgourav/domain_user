@@ -11,13 +11,21 @@
 
   <div class="row">
     <div class="col-md-10 col-xs-9">
-      <span>{{domain.name | lowercase}}.{{domain.extension | lowercase}}</span>
+      <span>{{domain.name}}.{{domain.extension | lowercase}}</span>
     </div>
-    <div class="col-md-2 col-xs-3">
+    <div class="col-md-2 col-xs-3" *ngIf="isSignedIn == true && showShortlist == true">
 
 
       <button class="btn-star" (click)="addFavourite(domain)">
         <fa-icon [icon]="faStar" size="1x"></fa-icon>
+      </button>
+    </div>
+
+    <div class="col-md-2 col-xs-3" *ngIf="isSignedIn == true && showDelete == true">
+
+
+      <button class="btn-star" (click)="deleteFavourite(domain)">
+        <fa-icon [icon]="faTrash" size="1x"></fa-icon>
       </button>
     </div>
   </div>

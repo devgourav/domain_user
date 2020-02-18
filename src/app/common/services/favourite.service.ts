@@ -24,9 +24,11 @@ export class FavouriteService {
   setLocalFavourite(fav: Domain, acc: Account) {
 
     if (acc) {
-
       if (acc.favourites) {
-        acc.favourites.push(fav);
+        let elementIndex = acc.favourites.findIndex(domain => domain.id == fav.id);
+        if (elementIndex < 0) {
+          acc.favourites.push(fav);
+        }
       } else {
         acc.favourites = [];
         acc.favourites.push(fav);
@@ -38,21 +40,22 @@ export class FavouriteService {
           duration: 2500
         })
       })
-    } else {
-      let favDomains: Domain[] = this.getLocalFavourites();
-      var index = favDomains.findIndex(favDomain => favDomain.id == fav.id);
-
-      if (index < 0) {
-        favDomains.push(fav);
-        console.log("setFavourite->", favDomains);
-      }
     }
+    //  else {
+    //   let favDomains: Domain[] = this.getLocalFavourites();
+    //   var index = favDomains.findIndex(favDomain => favDomain.id == fav.id);
+
+    //   if (index < 0) {
+    //     favDomains.push(fav);
+    //     console.log("setFavourite->", favDomains);
+    //   }
+    // }
   }
 
-  getLocalFavourites() {
-    let favDomains = JSON.parse(localStorage.getItem("domains") || "[]");
-    return favDomains;
-  }
+  // getLocalFavourites() {
+  //   let favDomains = JSON.parse(localStorage.getItem("domains") || "[]");
+  //   return favDomains;
+  // }
 
   getFavourites(uid): Observable<Domain[]> {
     return this.accountService.getAccountByUid(uid).pipe(
@@ -60,11 +63,29 @@ export class FavouriteService {
     );
   }
 
+  deleteFavourite(domain: Domain, acc: Account) {
 
-  deleteLocalFavourite(domain: Domain) {
-    let favDomains = this.getLocalFavourites();
-    var index = favDomains.findIndex(favDomain => domain.id == favDomain.id);
-    favDomains.splice(index, 1);
-    localStorage.setItem("domains", JSON.stringify(favDomains));
+    if (acc) {
+      if (acc.favourites) {
+        let favDomains: Domain[] = acc.favourites;
+        var index = favDomains.findIndex(favDomain => domain.id == favDomain.id);
+        favDomains.splice(index, 1);
+
+        this.accountService.updateAccount(acc).then(() => {
+          this.snackBar.open('Removed from Favourites', '', {
+            duration: 2500
+          })
+        })
+      }
+    }
+
   }
+
+
+  // deleteLocalFavourite(domain: Domain) {
+  //   let favDomains = this.getLocalFavourites();
+  //   var index = favDomains.findIndex(favDomain => domain.id == favDomain.id);
+  //   favDomains.splice(index, 1);
+  //   localStorage.setItem("domains", JSON.stringify(favDomains));
+  // }
 }

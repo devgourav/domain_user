@@ -21,7 +21,7 @@
 
         <h1 class="word-breakable">
           <span class="lead">The domain name</span>
-          <a [attr.href]="'http://' + domain.name">{{domain.name | lowercase}}.{{domain.extension | lowercase}}</a>
+          <a [attr.href]="'http://' + domain.name">{{domain.name}}.{{domain.extension | lowercase}}</a>
           <span class="small">
             is for sale
           </span>
@@ -41,7 +41,7 @@
         <div class="col-md-6 col-xs-12">
           <h4>What you get:</h4>
           <ul class="get-list">
-            <li>Domain name: <b>{{domain.name | lowercase}}.{{domain.extension | lowercase}}</b>
+            <li>Domain name: <b>{{domain.name}}.{{domain.extension | lowercase}}</b>
             </li>
             <li>Excellent Customer Support</li>
           </ul>
@@ -49,7 +49,7 @@
           <div class="price-box">
             <div class="price-box-desc">
 
-              <h4>Buy {{domain.name | lowercase}}.{{domain.extension | lowercase}}</h4>
+              <h4>Buy {{domain.name}}.{{domain.extension | lowercase}}</h4>
               <div class="price-box-value">
 
                 <div id="regular-price">
@@ -74,7 +74,7 @@
                       <span id="buy-now-text">Buy now</span>
                     </button>
                   </div>
-                  <div class="col-md-6 col-xs-12">
+                  <div class="col-md-6 col-xs-12" *ngIf="isSignedIn == true">
                     <button class="btn btn-lg btn-buy" id="shortlist-button" (click)="addFavourite(domain)">
                       <fa-icon [icon]="faStar" size="1x"></fa-icon>
                       <span id="buy-now-text">Shortlist</span>

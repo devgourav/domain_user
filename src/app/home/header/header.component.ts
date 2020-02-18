@@ -50,10 +50,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
 
-
-
-
-
     this.loginService.ifUserLoggedIn().then(response => {
       this.isSignedIn = response;
     })

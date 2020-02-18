@@ -30,8 +30,6 @@ export class FavouriteDetailsComponent implements OnInit {
       this.favouriteService.getFavourites(user.uid).subscribe(response => {
         this.favDomains = response;
       });
-    } else {
-      this.favDomains = this.favouriteService.getLocalFavourites();
     }
 
 

@@ -19,16 +19,16 @@
           </div>
 
 
-          <table class="table">
+          <table class="table" *ngIf="domain &&isPaidFor==false">
             <tbody>
               <tr>
-                <td>{{this.domain.name}}<div class="faint">Includes domain name and logo.</div>
+                <td>{{domain.name}}.{{domain.extension}}<div class="faint">Includes domain name and logo.</div>
                 </td>
-                <td class="text-right">{{this.domain.salePrice | currency:"USD"}}</td>
+                <td class="text-right">{{domain.salePrice | currency:"USD"}}</td>
               </tr>
               <tr>
                 <th style="border: 0" class="text-right">Total payable</th>
-                <th style="border: 0" class="text-right">{{this.domain.salePrice | currency:"USD"}}</th>
+                <th style="border: 0" class="text-right">{{domain.salePrice | currency:"USD"}}</th>
               </tr>
             </tbody>
           </table>

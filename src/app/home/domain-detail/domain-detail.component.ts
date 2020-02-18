@@ -30,10 +30,9 @@ export class DomainDetailComponent implements OnInit {
   faHeart = faHeart;
   faStar = faStar;
   account: Account;
-
   isOffered = false;
-
   randomColor = "#fff";
+  isSignedIn: boolean;
 
 
 
@@ -55,20 +54,15 @@ export class DomainDetailComponent implements OnInit {
 
   ngOnInit() {
 
-
-
-
-
-
+    this.loginService.ifUserLoggedIn().then(response => {
+      this.isSignedIn = response;
+    });
 
     this.route.paramMap.subscribe(params => {
       this.domainId = params.get("id");
       if (this.domainId) {
         this.fetchDomainById(this.domainId);
-
-
       }
-
     });
 
 

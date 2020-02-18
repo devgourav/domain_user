@@ -19,7 +19,7 @@
 
             <form id="search-form" [formGroup]="searchForm">
               <div class="search-control">
-                <input type="text" name="search" placeholder="Search domains" aria-label="Search domains" autofocus=""
+                <input type="text" name="search" placeholder="Search Names" aria-label="Search domains" autofocus=""
                   value="" formControlName="term">
                 <input type="submit" (click)="searchDomain()" value>
               </div>
@@ -43,7 +43,7 @@
                 <a routerLink="/order">Orders</a>
               </li>
 
-              <li class="fav-link">
+              <li class="fav-link" *ngIf="isSignedIn == true">
                 <a routerLink="/favourite" title="Favourites">
                   <fa-icon [icon]="faStar" size="2x"></fa-icon>
                 </a>
