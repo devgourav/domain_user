@@ -15,6 +15,8 @@ export interface Domain {
   font?: string;
   visits?: firebase.firestore.FieldValue;
   isSold?: boolean;
+  isFeatured?: boolean;
+  isDeactive?: boolean;
   description?: string;
   creationDate?: Date;
   modificationDate?: Date;

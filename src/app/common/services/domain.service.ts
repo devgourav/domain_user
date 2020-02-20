@@ -19,7 +19,7 @@ export class DomainService {
   constructor(private afs: AngularFirestore) { this.domainCollection = this.afs.collection('domains'); }
 
   getDomains(): Observable<Domain[]> {
-    var domainRef = this.afs.collection<Domain>('domains', ref => ref.where('isSold', '==', false).orderBy('creationDate', 'desc'));
+    var domainRef = this.afs.collection<Domain>('domains', ref => ref.where('isSold', '==', false).where('isDeactive', '==', false).orderBy('creationDate', 'desc'));
 
     return (this.domains = domainRef.snapshotChanges().pipe(
       map((actions) =>
@@ -32,8 +32,12 @@ export class DomainService {
     ));
   }
 
-  getFeauturedDomains(): Observable<Domain[]> {
-    var domainRef = this.afs.collection<Domain>('domains', ref => ref.where('isSold', '==', false).orderBy('salePrice', 'desc').limit(8));
+  getFeaturedDomains(): Observable<Domain[]> {
+    var domainRef = this.afs.collection<Domain>('domains', ref =>
+      ref.where('isFeatured', '==', true).where('isSold', '==', false).where('isDeactive', '==', false)
+    );
+
+
 
     return (this.domains = domainRef.snapshotChanges().pipe(
       map((actions) =>
@@ -47,7 +51,7 @@ export class DomainService {
   }
 
   getNewDomains(): Observable<Domain[]> {
-    var domainRef = this.afs.collection<Domain>('domains', ref => ref.where('isSold', '==', false).orderBy('creationDate', 'desc').limit(8));
+    var domainRef = this.afs.collection<Domain>('domains', ref => ref.where('isSold', '==', false).where('isDeactive', '==', false).orderBy('creationDate', 'desc').limit(8));
 
     return (this.domains = domainRef.snapshotChanges().pipe(
       map((actions) =>
@@ -62,7 +66,7 @@ export class DomainService {
 
 
   getHotDomains(): Observable<Domain[]> {
-    var domainRef = this.afs.collection<Domain>('domains', ref => ref.where('isSold', '==', false).orderBy('visits', 'desc').limit(8));
+    var domainRef = this.afs.collection<Domain>('domains', ref => ref.where('isSold', '==', false).where('isSold', '==', false).where('isDeactive', '==', false).orderBy('visits', 'desc').limit(8));
 
     return (this.domains = domainRef.snapshotChanges().pipe(
       map((actions) =>

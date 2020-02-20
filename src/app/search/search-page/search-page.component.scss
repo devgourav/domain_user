@@ -1,6 +1,5 @@
 @import "../../../assets/styles/common.scss";
 
-
 .wrapper {
   width: 100%;
 }
@@ -11,9 +10,7 @@
   color: #333;
 }
 
-
 .search-page-header {
-
   border-bottom: 1px solid #eee;
   padding: 14px 1em;
   height: 64px;
@@ -30,7 +27,6 @@
 
     label {
       margin-right: 8px;
-
     }
   }
 
@@ -51,6 +47,7 @@
 .sidebar {
   border-top: 1px solid #eee;
   font-weight: 600;
+  padding-bottom: 6vw;
 
   input {
     margin-right: 8px;
@@ -59,8 +56,6 @@
   .slider-filter {
     margin-top: 32px;
     border-top: 1px solid #eee;
-
-
 
     h4 {
       margin-top: 4px;
@@ -71,9 +66,6 @@
       margin-top: 32px;
     }
   }
-
-
-
 }
 
 .content {
@@ -89,14 +81,12 @@
   text-align: center;
 }
 
-
 mat-slider {
   width: 180px;
-  color: #052F6D;
+  color: #052f6d;
 }
 
 @media (min-width: 1440px) {
-
   .container {
     width: 1440px;
   }
@@ -124,7 +114,6 @@ mat-slider {
   }
 }
 
-
 @media (min-width: 992px) {
   .domains-container .sidebar .spacer {
     min-height: 64px;
@@ -133,9 +122,26 @@ mat-slider {
   }
 }
 
-
-
 .details-card {
   margin: 0 auto;
   margin-bottom: 30px;
+}
+
+.custom-slider {
+  padding: 8px;
+}
+
+::ng-deep {
+  .custom-slider .ng5-slider .ng5-slider-bar {
+    background: #ffe4d1;
+    height: 2px;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-selection {
+    background: orange;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-pointer {
+    background-color: #052F6D;
+  }
 }

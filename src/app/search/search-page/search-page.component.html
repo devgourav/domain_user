@@ -78,23 +78,35 @@
                         <div class="slider-filter">
 
 
-                          <h4>Select Max Length ( {{minLength}} - {{maxLength}} )</h4>
+                          <h4>Name Range</h4>
 
 
-                          <mat-slider [max]="maxLength" [min]="minLength" [thumbLabel]=true
+                          <!-- <mat-slider [max]="maxLength" [min]="minLength" [thumbLabel]=true
                             [(ngModel)]="lengthFilterValue" (change)="filterDomainsOnLength($event)">
-                          </mat-slider>
+                          </mat-slider> -->
+
+                          <div class="custom-slider">
+                            <ng5-slider [(value)]="minLength" [(highValue)]="maxLength" [options]="lenOptions"
+                              (valueChange)="filterDomainsOnLength($event)">
+                            </ng5-slider>
+
+                          </div>
 
 
 
+                          <h4>Price Range</h4>
 
 
-                          <h4>Select Max Amt ( {{minAmount | currency:"USD"}} - {{maxAmount | currency:"USD"}} )</h4>
-
-
-                          <mat-slider [max]="maxAmount" [min]="minAmount" [thumbLabel]=true
+                          <!-- <mat-slider [max]="maxAmount" [min]="minAmount" [thumbLabel]=true
                             [(ngModel)]="amountFilterValue" (change)="filterDomainsOnPrice($event)">
-                          </mat-slider>
+                          </mat-slider> -->
+
+                          <div class="custom-slider">
+
+                            <ng5-slider [(value)]="minAmount" [(highValue)]="maxAmount" [options]="priceOptions"
+                              (valueChange)="filterDomainsOnPrice($event)">
+                            </ng5-slider>
+                          </div>
 
 
                         </div>

@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { SharedRoutingModule } from './shared-routing.module';
-
-
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
 import { MatSidenavModule } from "@angular/material/sidenav";
@@ -35,6 +32,8 @@ import { LoginComponent } from './login/login.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { FirebaseUIModule, firebase, firebaseui } from 'firebaseui-angular';
 import { DomainCardComponent } from './domain-card/domain-card.component';
+import { Ng5SliderModule } from 'ng5-slider';
+
 
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
@@ -88,7 +87,9 @@ const MaterialComponents = [
 
 const DependencyModules = [
   ReactiveFormsModule,
-  FormsModule
+  FormsModule,
+  Ng5SliderModule,
+  FontAwesomeModule
 ];
 
 const SharedComponents = [
@@ -106,11 +107,10 @@ const SharedComponents = [
     SharedRoutingModule,
     MaterialComponents,
     DependencyModules,
-    FontAwesomeModule,
     FirebaseUIModule.forRoot(firebaseUiAuthConfig)
   ],
   exports: [
-    MaterialComponents, DependencyModules, SharedComponents, FontAwesomeModule
+    MaterialComponents, DependencyModules, SharedComponents
   ]
 })
 export class SharedModule { }

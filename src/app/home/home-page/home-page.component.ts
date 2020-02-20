@@ -40,6 +40,7 @@ export class HomePageComponent implements OnInit {
     this.getDomainDetails();
     this.getHotDomainDetails();
     this.getNewDomainDetails();
+    this.getFeatureDomainDetails();
 
     this.fetchCategories();
 
@@ -58,7 +59,7 @@ export class HomePageComponent implements OnInit {
 
 
   getDomainDetails() {
-    this.domainService.getFeauturedDomains().subscribe((response) => {
+    this.domainService.getFeaturedDomains().subscribe((response) => {
       this.domains = response;
       console.log("getFeauturedDomains->", this.domains);
     })
@@ -72,14 +73,14 @@ export class HomePageComponent implements OnInit {
   }
 
   getFeatureDomainDetails() {
-    this.domainService.getFeauturedDomains().subscribe((response) => {
+    this.domainService.getFeaturedDomains().subscribe((response) => {
       this.featuredDomains = response;
       console.log("getFeatureDomains->", this.featuredDomains);
     })
   }
 
   getNewDomainDetails() {
-    this.domainService.getDomains().subscribe((response) => {
+    this.domainService.getNewDomains().subscribe((response) => {
       this.newDomains = response;
       console.log("getNewDomains->", this.newDomains);
     })

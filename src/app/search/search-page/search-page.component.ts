@@ -6,6 +6,8 @@ import { CategoryService } from 'src/app/common/services/category.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HeaderService } from 'src/app/common/services/header.service';
 import { SearchWordService } from 'src/app/common/services/search-word.service';
+import { Options } from 'ng5-slider';
+
 
 export interface Filter {
   label: string;
@@ -34,6 +36,16 @@ export class SearchPageComponent implements OnInit {
   amountFilterValue: number = 0;
   selectedCategories: string[] = [];
 
+  lenOptions: Options = {
+    floor: 0,
+    ceil: 0
+  };
+
+  priceOptions: Options = {
+    floor: 0,
+    ceil: 0
+  };
+
   filters: Filter[] = [
     { label: "Relevant", type: "r" },
     { label: "Lowest Price", type: "lp" },
@@ -52,14 +64,18 @@ export class SearchPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getDomainDetails();
+
     this.getCategoryDetails();
 
     this.route.paramMap.subscribe(params => {
       this.searchTerm = params.get("term");
 
+      console.log("SearchPageComponent->searchTerm", this.searchTerm);
+
       if (this.searchTerm) {
         this.getSearchDomainDetails(this.searchTerm);
+      } else {
+        this.getDomainDetails();
       }
     });
 
@@ -105,6 +121,16 @@ export class SearchPageComponent implements OnInit {
       //console.log("getDomainDetails->", this.minAmount);
 
       this.amountFilterValue = this.maxAmount;
+
+      this.lenOptions = {
+        floor: this.minLength,
+        ceil: this.maxLength
+      }
+
+      this.priceOptions = {
+        floor: this.minAmount,
+        ceil: this.maxAmount
+      }
     })
   }
 
@@ -139,12 +165,15 @@ export class SearchPageComponent implements OnInit {
 
   filterDomainsOnLength(event) {
 
+    console.log("filterDomainsOnLength->this.maxLength", this.maxLength);
+    console.log("filterDomainsOnLength->this.minLength", this.minLength);
 
-    let length = event.value;
+
+    //let length = event.value;
     //console.log("filterDomainsOnLength->", length);
 
     this.domains = this.allDomains.filter(domain => {
-      return domain.name.length <= length;
+      return domain.name.length <= this.maxLength && domain.name.length >= this.minLength;
     });
 
 
@@ -153,11 +182,11 @@ export class SearchPageComponent implements OnInit {
   filterDomainsOnPrice(event) {
 
 
-    let price = event.value;
+    // let price = event.value;
     //console.log("filterDomainsOnPrice->", price);
 
     this.domains = this.allDomains.filter(domain => {
-      return domain.salePrice <= price;
+      return +domain.salePrice <= this.maxAmount && +domain.salePrice >= this.minAmount;
     });
 
 
