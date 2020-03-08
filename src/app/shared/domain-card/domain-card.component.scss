@@ -80,6 +80,17 @@
       text-shadow: none;
     }
 
+    .btn-disabled {
+      color: #616161;
+    }
+
+    .btn-disabled:hover {
+      color: #616161;
+      background: #fff;
+    }
+
+
+
     .btn-buy:hover {
       background: #052F6D;
       color: #fff;
@@ -87,6 +98,12 @@
 
     .price-container {
       text-align: right;
+    }
+
+    .no-sale-text {
+      text-align: center;
+      font-size: 0.8em;
+      color: #e57373;
     }
   }
 

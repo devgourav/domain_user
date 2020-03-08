@@ -72,11 +72,7 @@ export class SearchPageComponent implements OnInit {
 
       console.log("SearchPageComponent->searchTerm", this.searchTerm);
 
-      if (this.searchTerm) {
-        this.getSearchDomainDetails(this.searchTerm);
-      } else {
-        this.getDomainDetails();
-      }
+      this.getDomainDetails();
     });
 
 
@@ -97,28 +93,29 @@ export class SearchPageComponent implements OnInit {
       this.domains = response;
       this.allDomains = response;
 
+      if (this.searchTerm && this.searchTerm != " " && this.searchTerm.toLowerCase() != "all") {
+        this.getSearchDomainDetails(response, this.searchTerm);
+      } else {
+        this.maxLength = this.allDomains.reduce((prev, curr) => {
+          return (prev.name.length > curr.name.length) ? prev : curr;
+        }).name.length;
 
-      this.maxLength = this.allDomains.reduce((prev, curr) => {
-        return (prev.name.length > curr.name.length) ? prev : curr;
-      }).name.length;
+        this.minLength = this.allDomains.reduce((prev, curr) => {
+          return (prev.name.length < curr.name.length) ? prev : curr;
+        }).name.length;
 
-      this.minLength = this.allDomains.reduce((prev, curr) => {
-        return (prev.name.length < curr.name.length) ? prev : curr;
-      }).name.length;
-
-      this.lengthFilterValue = this.maxLength;
+        this.lengthFilterValue = this.maxLength;
 
 
-      this.maxAmount = +this.allDomains.reduce((prev, curr) => {
-        return (prev.salePrice > curr.salePrice) ? prev : curr;
-      }).salePrice;
+        this.maxAmount = +this.allDomains.reduce((prev, curr) => {
+          return (prev.salePrice > curr.salePrice) ? prev : curr;
+        }).salePrice;
 
-      this.minAmount = +this.allDomains.reduce((prev, curr) => {
-        return (prev.salePrice < curr.salePrice) ? prev : curr;
-      }).salePrice;
+        this.minAmount = +this.allDomains.reduce((prev, curr) => {
+          return (prev.salePrice < curr.salePrice) ? prev : curr;
+        }).salePrice;
 
-      //console.log("getDomainDetails->", this.maxAmount);
-      //console.log("getDomainDetails->", this.minAmount);
+      }
 
       this.amountFilterValue = this.maxAmount;
 
@@ -134,32 +131,20 @@ export class SearchPageComponent implements OnInit {
     })
   }
 
-  getSearchDomainDetails(term: string) {
+  getSearchDomainDetails(response: Domain[], term: string) {
 
-    //console.log("getSearchDomainDetails->term", term);
 
-    this.domainService.getDomains().subscribe((response) => {
-      this.domains = response;
 
-      if (term.toLowerCase() == 'all') {
-        this.domains = response;
-      } else {
+    this.domains = this.domains.filter(domain => {
 
-        this.domains = this.domains.filter(domain => {
+      let keywords = domain.keyWords.map(keyword => keyword.toLowerCase());
+      let categories = domain.category.map(keyword => keyword.name.toLowerCase());
 
-          let keywords = domain.keyWords.map(keyword => keyword.toLowerCase());
-          let categories = domain.category.map(keyword => keyword.name.toLowerCase());
-
-          if (domain.name.toLowerCase().includes(term.toLowerCase()) || keywords.includes(term.toLowerCase()) || categories.includes(term.toLowerCase())) {
-            return true;
-          }
-        });
-
+      if (domain.name.toLowerCase().includes(term.toLowerCase()) || keywords.includes(term.toLowerCase()) || categories.includes(term.toLowerCase())) {
+        return true;
       }
+    });
 
-
-      //console.log("getSearchDomainDetails->", this.domains);
-    })
   }
 
 
@@ -287,10 +272,7 @@ export class SearchPageComponent implements OnInit {
     })
   }
 
-  searchDomains(event) {
-    //console.log("searchDomains->", event);
-    this.getSearchDomainDetails(event);
-  }
+
 
   addFilters(event) {
     //console.log("addFilters->event", event.target.value);
@@ -300,20 +282,20 @@ export class SearchPageComponent implements OnInit {
     switch (filter) {
       case "lp":
         this.domains = this.domains.sort((domain1, domain2) => {
-          if (domain1.price > domain2.price) {
+          if (domain1.salePrice > domain2.salePrice) {
             return 1;
           }
-          if (domain1.price < domain2.price) {
+          if (domain1.salePrice < domain2.salePrice) {
             return -1;
           }
         })
         break;
       case "hp":
         this.domains = this.domains.sort((domain1, domain2) => {
-          if (domain1.price > domain2.price) {
+          if (domain1.salePrice > domain2.salePrice) {
             return -1;
           }
-          if (domain1.price < domain2.price) {
+          if (domain1.salePrice < domain2.salePrice) {
             return 1;
           }
         })

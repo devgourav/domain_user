@@ -1,6 +1,5 @@
 <div class="wrapper">
 
-  <!-- <app-header [isSearch]="true" (searchTerm)="searchDomains($event)"></app-header> -->
   <div class="container domain-result">
     <div class="row">
       <div class="col-md-12">
@@ -48,15 +47,34 @@
                 <div>
                   <!-- <div class="spacer"></div> -->
                   <div class="accordion expanded industry">
-                    <div class="toggle">
-                      <h3>Categories</h3>
-                    </div>
                     <div class="body expanded">
                       <div>
 
+                        <div class="slider-filter">
+
+
+                          <h4>Name Range</h4>
+
+                          <div class="custom-slider">
+                            <ng5-slider [(value)]="minLength" [(highValue)]="maxLength" [options]="lenOptions"
+                              (valueChange)="filterDomainsOnLength($event)">
+                            </ng5-slider>
+                          </div>
+
+                          <h4>Price Range</h4>
+                          <div class="custom-slider">
+                            <ng5-slider [(value)]="minAmount" [(highValue)]="maxAmount" [options]="priceOptions"
+                              (valueChange)="filterDomainsOnPrice($event)">
+                            </ng5-slider>
+                          </div>
+                        </div>
 
 
                         <div class="pure-form">
+
+                          <div class="toggle">
+                            <h3>Categories</h3>
+                          </div>
 
                           <label for="cat-all-option" class="pure-radio">
                             <input id="cat-all-option" type="checkbox" value="all"
@@ -75,46 +93,10 @@
                           </label>
                         </div>
 
-                        <div class="slider-filter">
-
-
-                          <h4>Name Range</h4>
-
-
-                          <!-- <mat-slider [max]="maxLength" [min]="minLength" [thumbLabel]=true
-                            [(ngModel)]="lengthFilterValue" (change)="filterDomainsOnLength($event)">
-                          </mat-slider> -->
-
-                          <div class="custom-slider">
-                            <ng5-slider [(value)]="minLength" [(highValue)]="maxLength" [options]="lenOptions"
-                              (valueChange)="filterDomainsOnLength($event)">
-                            </ng5-slider>
-
-                          </div>
-
-
-
-                          <h4>Price Range</h4>
-
-
-                          <!-- <mat-slider [max]="maxAmount" [min]="minAmount" [thumbLabel]=true
-                            [(ngModel)]="amountFilterValue" (change)="filterDomainsOnPrice($event)">
-                          </mat-slider> -->
-
-                          <div class="custom-slider">
-
-                            <ng5-slider [(value)]="minAmount" [(highValue)]="maxAmount" [options]="priceOptions"
-                              (valueChange)="filterDomainsOnPrice($event)">
-                            </ng5-slider>
-                          </div>
-
-
-                        </div>
-
-
 
 
                       </div>
+
                     </div>
                   </div>
                 </div>

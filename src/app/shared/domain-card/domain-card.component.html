@@ -14,16 +14,12 @@
       <span>{{domain.name}}.{{domain.extension | lowercase}}</span>
     </div>
     <div class="col-md-2 col-xs-3" *ngIf="isSignedIn == true && showShortlist == true">
-
-
       <button class="btn-star" (click)="addFavourite(domain)">
         <fa-icon [icon]="faStar" size="1x"></fa-icon>
       </button>
     </div>
 
     <div class="col-md-2 col-xs-3" *ngIf="isSignedIn == true && showDelete == true">
-
-
       <button class="btn-star" (click)="deleteFavourite(domain)">
         <fa-icon [icon]="faTrash" size="1x"></fa-icon>
       </button>
@@ -32,12 +28,15 @@
 
   <div class="row card-bottom">
     <div class="col-md-6 col-xs-12">
-      <button class="btn btn-lg btn-buy" id="buy-button" (click)="openDomainDetail(domain.id)">
+      <button [disabled]="!domain.salePrice" class="btn btn-lg btn-buy" id="buy-button"
+        (click)="openDomainDetail(domain.id)" [ngClass]="{'btn-disabled':!domain.salePrice}">
         <span id="buy-now-text">Buy now</span>
       </button>
     </div>
     <div class="col-md-6 col-xs-12 price-container">
-      <span class="price">{{domain.salePrice | currency:"USD":'symbol':'1.0'}}</span>
+      <span *ngIf="domain.salePrice" class="price">{{domain.salePrice | currency:"USD":'symbol':'1.0'}}</span>
+
+      <span *ngIf="!domain.salePrice" class="no-sale-text">NOT FOR SALE</span>
     </div>
   </div>
 
